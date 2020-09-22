@@ -1,0 +1,1 @@
+#define BABYLONCPP_OPTION_ENABLE_SIMD        false

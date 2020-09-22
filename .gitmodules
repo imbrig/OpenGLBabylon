@@ -1,0 +1,3 @@
+[submodule "BabylonCpp"]
+	path = BabylonCpp
+	url = https://github.com/samdauwe/BabylonCpp.git
