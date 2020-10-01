@@ -1,5 +1,4 @@
 #import "OpenGLViewController.h"
-#import "AAPLOpenGLRenderer.h"
 #import "BabylonManager.h"
 
 @implementation OpenGLView
@@ -16,7 +15,6 @@
 @implementation OpenGLViewController
 {
     OpenGLView *_view;
-    AAPLOpenGLRenderer *_openGLRenderer;
     PlatformGLContext *_context;
     GLuint _defaultFBOName;
     
@@ -36,11 +34,8 @@
     _view = (OpenGLView *)self.view;
     [self prepareView];
     [self makeCurrentContext];
-    _openGLRenderer = [[AAPLOpenGLRenderer alloc] initWithDefaultFBOName:_defaultFBOName];
-    NSAssert(_openGLRenderer, @"OpenGL Renderer failed initialization");
-    [_openGLRenderer useTextureFromFileAsBaseMap];
-    [_openGLRenderer resize:self.drawableSize];
     _babylonManager = [[BabylonManager alloc] init];
+    [_babylonManager initializeWithWidth:720 height:1280];
 }
 
 #if TARGET_MACOS
@@ -73,7 +68,6 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
     CGLLockContext(_context.CGLContextObj);
     [_context makeCurrentContext];
-    [_openGLRenderer draw];
     [_babylonManager draw];
     CGLFlushDrawable(_context.CGLContextObj);
     CGLUnlockContext(_context.CGLContextObj);
@@ -115,9 +109,10 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
     NSSize viewSizePoints = _view.bounds.size;
     NSSize viewSizePixels = [_view convertSizeToBacking:viewSizePoints];
     [self makeCurrentContext];
-    [_openGLRenderer resize:viewSizePixels];
+  
+    // TODO: Update size to Babylon
+  
     CGLUnlockContext(_context.CGLContextObj);
-
     if(!CVDisplayLinkIsRunning(_displayLink))
     {
         CVDisplayLinkStart(_displayLink);
@@ -140,7 +135,6 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 - (void)draw:(id)sender
 {
     [EAGLContext setCurrentContext:_context];
-    [_openGLRenderer draw];
     [_babylonManager draw];
     
     glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
@@ -200,7 +194,8 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
     assert(_colorRenderbuffer != 0);
     glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
     [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
-    [_openGLRenderer resize:self.drawableSize];
+
+    // TODO: Update size to Babylon
 }
 
 - (void)viewDidLayoutSubviews

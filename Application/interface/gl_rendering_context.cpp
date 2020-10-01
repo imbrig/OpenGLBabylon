@@ -2,16 +2,15 @@
 
 #include <array>
 
-// glad
-// GLAD_DEBUG  enables to debug all the OpenGl calls (calls GlGetError at each
-// step) in order to use this, you need to replace the folder external/glad/
-// content by the content of external/glad.debug, and to define GLAD_DEBUG
-// below. #define GLAD_DEBUG
-#include <glad/glad.h>
-
-#define GLFW_INCLUDE_NONE
-// GLFW
-//#include <GLFW/glfw3.h>
+#if TARGET_MACOS
+#include <OpenGL/gl.h>
+#include <OpenGL/gl3.h>
+#include <OpenGL/gl3ext.h>
+#else // if (TARGET_IOS || TARGET_TVOS)
+#include <OpenGLES/ES2/gl.h>
+#include <OpenGLES/ES2/glext.h>
+#include <OpenGLES/ES3/gl.h>
+#endif // !(TARGET_IOS || TARGET_TVOS)
 
 // Logging
 #include <babylon/core/logging.h>
@@ -136,9 +135,6 @@ void glad_post_call_callback(const char* name, void* /*funcptr*/, int /*len_args
   msg_str << "ERROR " << GlErrorCodeStr(error_code) << "(" << error_code << ") in " << name << "\n";
   if (error_code != GL_NO_ERROR) {
     fprintf(stderr, "%s", msg_str.str().c_str());
-#ifdef _MSC_VER
-    OutputDebugString(msg_str.str().c_str());
-#endif
   }
 }
 
@@ -147,43 +143,15 @@ void glad_pre_call_callback(const char* name, void* /*funcptr*/, int /*len_args*
   std::stringstream msg_str;
   msg_str << "glad_pre_call_callback " << name << "\n";
   fprintf(stderr, "%s", msg_str.str().c_str());
-#ifdef _MSC_VER
-  OutputDebugString(msg_str.str().c_str());
-#if defined(_WIN32) && !defined(_WIN64)
-#define WIN_32BITS
-#endif
-#endif
 }
 
 bool GLRenderingContext::initialize(bool enableGLDebugging)
 {
-  // HUM : glad already loaded by imgui ?
-  // Initialize glad
-//  if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
-//    fprintf(stderr, "gladLoadGLLoader: Failed to initialize GLFW context\n");
-//    return false;
-//  }
-  /*if (!GLAD_GL_ES_VERSION_3_0) {
-    fprintf(stderr, "GLAD could not initialize OpenGl ES 3.0\n");
-  }*/
-#ifdef GLAD_DEBUG
-  glad_set_pre_callback(glad_pre_call_callback);
-  glad_set_post_callback(glad_post_call_callback);
-#endif
-
   // Log the GL version
   BABYLON_LOGF_INFO("GLRenderingContext", "Using GL version: %s", glGetString(GL_VERSION))
 
   // Setup OpenGL options
-  // glEnable(GL_MULTISAMPLE);
-
-  // Enable debug output
-#if !defined(__EMSCRIPTEN__) && !defined(WIN_32BITS)
-  if (enableGLDebugging) {
-    // glEnable(GL_DEBUG_OUTPUT);
-    // glDebugMessageCallback(MessageCallback, nullptr);
-  }
-#endif //__EMSCRIPTEN__
+  glEnable(GL_MULTISAMPLE);
   return true;
 }
 
@@ -368,7 +336,11 @@ void GLRenderingContext::clearColor(GLclampf red, GLclampf green, GLclampf blue,
 
 void GLRenderingContext::clearDepth(GLclampf depth)
 {
+#if TARGET_MACOS
   glClearDepth(depth);
+#else // if (TARGET_IOS || TARGET_TVOS)
+  glClearDepthf(depth);
+#endif // !(TARGET_IOS || TARGET_TVOS)
 }
 
 void GLRenderingContext::clearStencil(GLint stencil)

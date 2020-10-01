@@ -24,7 +24,6 @@ bool Canvas::initializeContext3d()
   if (!_initialized) {
     _initialized = _renderingContext->initialize();
   }
-
   return _initialized;
 }
 

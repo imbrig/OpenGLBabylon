@@ -13,7 +13,7 @@ public:
   BabylonLauncher();
   ~BabylonLauncher();
   
-  void intialize();
+  void intialize(int width, int height);
   void draw();
   void update();
   

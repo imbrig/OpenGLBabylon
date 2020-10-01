@@ -13,8 +13,6 @@
 		056CA4042512D3830078139A /* gl_rendering_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3F92512D3830078139A /* gl_rendering_context.cpp */; };
 		056CA4052512D3830078139A /* canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3FA2512D3830078139A /* canvas.cpp */; };
 		056CA4062512D3830078139A /* canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3FA2512D3830078139A /* canvas.cpp */; };
-		056CA40F2512D7390078139A /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 056CA40E2512D7390078139A /* glad.c */; };
-		056CA4102512D7390078139A /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 056CA40E2512D7390078139A /* glad.c */; };
 		056CA4342513105E0078139A /* BabylonManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonManager.mm */; };
 		056CA4352513105E0078139A /* BabylonManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonManager.mm */; };
 		0595ACF2251186E500D05F0B /* gradient_material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595A57E251186DD00D05F0B /* gradient_material.cpp */; };
@@ -1388,16 +1386,6 @@
 		3A9B6E3C209003ED00528FEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A9B6E3A209003EC00528FEF /* Main.storyboard */; };
 		3A9B6E442090239300528FEF /* OpenGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6E432090239300528FEF /* OpenGLViewController.m */; };
 		3A9B6E452090239300528FEF /* OpenGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6E432090239300528FEF /* OpenGLViewController.m */; };
-		3A9B6E4A2090248C00528FEF /* AAPLOpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6E492090248C00528FEF /* AAPLOpenGLRenderer.m */; };
-		3A9B6E4B2090248C00528FEF /* AAPLOpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6E492090248C00528FEF /* AAPLOpenGLRenderer.m */; };
-		3A9D6F3320AB7DB7006DCA40 /* AAPLMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D6F3220AB7DB7006DCA40 /* AAPLMathUtilities.m */; };
-		3A9D6F3420AB7DB7006DCA40 /* AAPLMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D6F3220AB7DB7006DCA40 /* AAPLMathUtilities.m */; };
-		3ABE339820AE8A68002FD18C /* shaderTexRect.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE339520AE8A67002FD18C /* shaderTexRect.fsh */; };
-		3ABE339920AE8A68002FD18C /* shaderTexRect.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE339520AE8A67002FD18C /* shaderTexRect.fsh */; };
-		3ABE339B20AE8A68002FD18C /* shaderTex2D.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE339620AE8A67002FD18C /* shaderTex2D.fsh */; };
-		3ABE339C20AE8A68002FD18C /* shaderTex2D.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE339620AE8A67002FD18C /* shaderTex2D.fsh */; };
-		3ABE339E20AE8A68002FD18C /* shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE339720AE8A67002FD18C /* shader.vsh */; };
-		3ABE339F20AE8A68002FD18C /* shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE339720AE8A67002FD18C /* shader.vsh */; };
 		3ABE33A220AE8A8D002FD18C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE33A120AE8A8D002FD18C /* Assets */; };
 		3ABE33A320AE8A8D002FD18C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE33A120AE8A8D002FD18C /* Assets */; };
 		3AF26D26208FBC2700203EB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF26D21208FBC2700203EB3 /* main.m */; };
@@ -1412,9 +1400,6 @@
 		056CA3FA2512D3830078139A /* canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = canvas.cpp; sourceTree = "<group>"; };
 		056CA3FB2512D3830078139A /* canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = canvas.h; sourceTree = "<group>"; };
 		056CA3FE2512D3830078139A /* gl_rendering_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl_rendering_context.h; sourceTree = "<group>"; };
-		056CA40A2512D7390078139A /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
-		056CA40C2512D7390078139A /* glad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
-		056CA40E2512D7390078139A /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		056CA4322513105E0078139A /* BabylonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonManager.h; sourceTree = "<group>"; };
 		056CA4332513105E0078139A /* BabylonManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BabylonManager.mm; sourceTree = "<group>"; };
 		0595A532251186DC00D05F0B /* gradient_vertex_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradient_vertex_fx.h; sourceTree = "<group>"; };
@@ -3179,7 +3164,6 @@
 		0595ACF1251186E400D05F0B /* debug_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debug_layer.cpp; sourceTree = "<group>"; };
 		0598FBD425145C4F0035F7FC /* BabylonLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonLauncher.h; sourceTree = "<group>"; };
 		0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BabylonLauncher.cpp; sourceTree = "<group>"; };
-		3A0D025D20A3F5F800FE2E25 /* AAPLGLHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLGLHeaders.h; sourceTree = "<group>"; };
 		3A206C3B208EE6A70092C542 /* OpenGLBabylon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLBabylon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A206C42208EE6A70092C542 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A206C44208EE6A70092C542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -3189,13 +3173,6 @@
 		3A9B6E3B209003EC00528FEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A9B6E422090239300528FEF /* OpenGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenGLViewController.h; sourceTree = "<group>"; };
 		3A9B6E432090239300528FEF /* OpenGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenGLViewController.m; sourceTree = "<group>"; };
-		3A9B6E482090248C00528FEF /* AAPLOpenGLRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLOpenGLRenderer.h; sourceTree = "<group>"; };
-		3A9B6E492090248C00528FEF /* AAPLOpenGLRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLOpenGLRenderer.m; sourceTree = "<group>"; };
-		3A9D6F3120AB7DB7006DCA40 /* AAPLMathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLMathUtilities.h; sourceTree = "<group>"; };
-		3A9D6F3220AB7DB7006DCA40 /* AAPLMathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLMathUtilities.m; sourceTree = "<group>"; };
-		3ABE339520AE8A67002FD18C /* shaderTexRect.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shaderTexRect.fsh; sourceTree = "<group>"; };
-		3ABE339620AE8A67002FD18C /* shaderTex2D.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shaderTex2D.fsh; sourceTree = "<group>"; };
-		3ABE339720AE8A67002FD18C /* shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vsh; sourceTree = "<group>"; };
 		3ABE33A120AE8A8D002FD18C /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		3AF26D21208FBC2700203EB3 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3AF26D23208FBC2700203EB3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -3234,49 +3211,6 @@
 				056CA3FE2512D3830078139A /* gl_rendering_context.h */,
 			);
 			path = interface;
-			sourceTree = "<group>";
-		};
-		056CA4072512D7390078139A /* glad */ = {
-			isa = PBXGroup;
-			children = (
-				056CA4082512D7390078139A /* include */,
-				056CA40D2512D7390078139A /* src */,
-			);
-			name = glad;
-			path = BabylonCpp/external/glad;
-			sourceTree = "<group>";
-		};
-		056CA4082512D7390078139A /* include */ = {
-			isa = PBXGroup;
-			children = (
-				056CA4092512D7390078139A /* KHR */,
-				056CA40B2512D7390078139A /* glad */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		056CA4092512D7390078139A /* KHR */ = {
-			isa = PBXGroup;
-			children = (
-				056CA40A2512D7390078139A /* khrplatform.h */,
-			);
-			path = KHR;
-			sourceTree = "<group>";
-		};
-		056CA40B2512D7390078139A /* glad */ = {
-			isa = PBXGroup;
-			children = (
-				056CA40C2512D7390078139A /* glad.h */,
-			);
-			path = glad;
-			sourceTree = "<group>";
-		};
-		056CA40D2512D7390078139A /* src */ = {
-			isa = PBXGroup;
-			children = (
-				056CA40E2512D7390078139A /* glad.c */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		0595A52D251186DC00D05F0B /* MaterialsLibrary */ = {
@@ -6874,25 +6808,13 @@
 		3A206C29208EE6A70092C542 = {
 			isa = PBXGroup;
 			children = (
-				056CA4072512D7390078139A /* glad */,
 				0595A5AB251186DD00D05F0B /* BabylonCpp */,
 				0595A52D251186DC00D05F0B /* MaterialsLibrary */,
-				3A206C30208EE6A70092C542 /* Renderer */,
 				3AF26D20208FBB9E00203EB3 /* Application */,
 				3ABE33A120AE8A8D002FD18C /* Assets */,
 				3A206C3C208EE6A70092C542 /* Products */,
 				FB4B7970FB4B7F3000000001 /* Configuration */,
 			);
-			sourceTree = "<group>";
-		};
-		3A206C30208EE6A70092C542 /* Renderer */ = {
-			isa = PBXGroup;
-			children = (
-				3A9B6E472090246600528FEF /* OpenGL */,
-				3A9D6F3120AB7DB7006DCA40 /* AAPLMathUtilities.h */,
-				3A9D6F3220AB7DB7006DCA40 /* AAPLMathUtilities.m */,
-			);
-			path = Renderer;
 			sourceTree = "<group>";
 		};
 		3A206C3C208EE6A70092C542 /* Products */ = {
@@ -6921,19 +6843,6 @@
 				3A206C59208EE6A70092C542 /* Info.plist */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		3A9B6E472090246600528FEF /* OpenGL */ = {
-			isa = PBXGroup;
-			children = (
-				3A0D025D20A3F5F800FE2E25 /* AAPLGLHeaders.h */,
-				3A9B6E482090248C00528FEF /* AAPLOpenGLRenderer.h */,
-				3A9B6E492090248C00528FEF /* AAPLOpenGLRenderer.m */,
-				3ABE339720AE8A67002FD18C /* shader.vsh */,
-				3ABE339620AE8A67002FD18C /* shaderTex2D.fsh */,
-				3ABE339520AE8A67002FD18C /* shaderTexRect.fsh */,
-			);
-			path = OpenGL;
 			sourceTree = "<group>";
 		};
 		3AF26D20208FBB9E00203EB3 /* Application */ = {
@@ -7040,9 +6949,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ABE33A220AE8A8D002FD18C /* Assets in Resources */,
-				3ABE339B20AE8A68002FD18C /* shaderTex2D.fsh in Resources */,
-				3ABE339E20AE8A68002FD18C /* shader.vsh in Resources */,
-				3ABE339820AE8A68002FD18C /* shaderTexRect.fsh in Resources */,
 				0595B08E251186E600D05F0B /* quadratic_error_simplification.cpp.bak in Resources */,
 				3A206C43208EE6A70092C542 /* Main.storyboard in Resources */,
 			);
@@ -7052,13 +6958,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ABE339F20AE8A68002FD18C /* shader.vsh in Resources */,
 				3ABE33A320AE8A8D002FD18C /* Assets in Resources */,
 				3A206C58208EE6A70092C542 /* LaunchScreen.storyboard in Resources */,
-				3ABE339C20AE8A68002FD18C /* shaderTex2D.fsh in Resources */,
 				0595B08F251186E600D05F0B /* quadratic_error_simplification.cpp.bak in Resources */,
 				3A9B6E3C209003ED00528FEF /* Main.storyboard in Resources */,
-				3ABE339920AE8A68002FD18C /* shaderTexRect.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7254,7 +7157,6 @@
 				0595AFE8251186E600D05F0B /* anaglyph_universal_camera.cpp in Sources */,
 				0595AF3C251186E600D05F0B /* blur_post_process.cpp in Sources */,
 				0595B1FC251186E700D05F0B /* daydream_controller.cpp in Sources */,
-				056CA40F2512D7390078139A /* glad.c in Sources */,
 				0595B016251186E600D05F0B /* base_camera_pointers_input.cpp in Sources */,
 				0595AF5A251186E600D05F0B /* sub_surface_scattering_post_process.cpp in Sources */,
 				0595B116251186E700D05F0B /* action_event.cpp in Sources */,
@@ -7371,7 +7273,6 @@
 				0595B21C251186E700D05F0B /* animation_range.cpp in Sources */,
 				0595AF98251186E600D05F0B /* base64.cpp in Sources */,
 				0595B00A251186E600D05F0B /* free_camera.cpp in Sources */,
-				3A9D6F3320AB7DB7006DCA40 /* AAPLMathUtilities.m in Sources */,
 				0595AE88251186E600D05F0B /* anisotropy_block.cpp in Sources */,
 				0595AEAC251186E600D05F0B /* standard_material_defines.cpp in Sources */,
 				0595AE38251186E500D05F0B /* frag_coord_block.cpp in Sources */,
@@ -7424,7 +7325,6 @@
 				0595B236251186E700D05F0B /* click_info.cpp in Sources */,
 				0595B13A251186E700D05F0B /* vector3.cpp in Sources */,
 				0595AD18251186E500D05F0B /* lava_material_defines.cpp in Sources */,
-				3A9B6E4A2090248C00528FEF /* AAPLOpenGLRenderer.m in Sources */,
 				0595B162251186E700D05F0B /* angle.cpp in Sources */,
 				0595B1F4251186E700D05F0B /* oculus_touch_controller.cpp in Sources */,
 				0595B23A251186E700D05F0B /* physics_viewer.cpp in Sources */,
@@ -7957,7 +7857,6 @@
 				0595B1F9251186E700D05F0B /* pose_enabled_controller.cpp in Sources */,
 				0595AD8D251186E500D05F0B /* bounding_info.cpp in Sources */,
 				0595B11D251186E700D05F0B /* state_condition.cpp in Sources */,
-				3A9D6F3420AB7DB7006DCA40 /* AAPLMathUtilities.m in Sources */,
 				0595B213251186E700D05F0B /* easing_function.cpp in Sources */,
 				0595AE41251186E500D05F0B /* screen_size_block.cpp in Sources */,
 				0595B237251186E700D05F0B /* click_info.cpp in Sources */,
@@ -7978,7 +7877,6 @@
 				0595AFD1251186E600D05F0B /* picking_info.cpp in Sources */,
 				0595AECF251186E600D05F0B /* pbr_specular_glossiness_material.cpp in Sources */,
 				0595ADE1251186E500D05F0B /* effect_fallbacks.cpp in Sources */,
-				3A9B6E4B2090248C00528FEF /* AAPLOpenGLRenderer.m in Sources */,
 				0595AE49251186E500D05F0B /* posterize_block.cpp in Sources */,
 				0595B1D7251186E700D05F0B /* directional_light.cpp in Sources */,
 				0595B019251186E600D05F0B /* free_camera_gamepad_input.cpp in Sources */,
@@ -8128,7 +8026,6 @@
 				0595B18F251186E700D05F0B /* skeleton.cpp in Sources */,
 				0595B105251186E700D05F0B /* stencil_state.cpp in Sources */,
 				0595AE11251186E500D05F0B /* replace_color_block.cpp in Sources */,
-				056CA4102512D7390078139A /* glad.c in Sources */,
 				0595AEA7251186E600D05F0B /* node_material_connection_point.cpp in Sources */,
 				0595AEBD251186E600D05F0B /* pbr_material_defines.cpp in Sources */,
 				0595AE2F251186E500D05F0B /* one_minus_block.cpp in Sources */,
@@ -8688,7 +8585,7 @@
 					"$(OTHER_CFLAGS)",
 					"'-std=gnu++17'",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imbrig.OpenGLBabylon;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.image-metrics.OpenGLBabylon";
 				PRODUCT_NAME = OpenGLBabylon;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
@@ -8754,7 +8651,7 @@
 					"$(OTHER_CFLAGS)",
 					"'-std=gnu++17'",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imbrig.OpenGLBabylon;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.image-metrics.OpenGLBabylon";
 				PRODUCT_NAME = OpenGLBabylon;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;

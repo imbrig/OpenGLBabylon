@@ -23,17 +23,14 @@ BabylonLauncher::BabylonLauncher()
 {
   _renderCanvas = std::make_unique<BABYLON::impl::Canvas>();
   _scene = MakeHelloScene();
-  intialize();
 }
 
 BabylonLauncher::~BabylonLauncher()
 {
 }
 
-void BabylonLauncher::intialize()
+void BabylonLauncher::intialize(int width, int height)
 {
-  int width = 800;
-  int height = 600;
   _renderCanvas->initializeContext3d();
   _renderCanvas->setFrameSize(width, height);
   // Initialize Canvas before Scene
@@ -43,13 +40,10 @@ void BabylonLauncher::intialize()
 void BabylonLauncher::draw()
 {
   // Make current context should be done before calling draw, from the app level.
-  glClearColor(0.f, 0.f, 1.f, 1.f);
-  // Render Scene
   if(_scene)
   {
     _scene->render();
   }
-  // Call swap front and back buffers after calling draw, at the app level.
 }
 
 void BabylonLauncher::update()

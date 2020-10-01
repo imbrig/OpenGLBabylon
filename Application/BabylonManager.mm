@@ -21,6 +21,11 @@
   delete _launcher;
 }
 
+- (void)initializeWithWidth:(int)width height:(int)height
+{
+  _launcher->intialize(width, height);
+}
+
 - (void)draw
 {
   _launcher->draw();
