@@ -16,10 +16,10 @@
 {
     OpenGLView *_view;
     PlatformGLContext *_context;
-    GLuint _defaultFBOName;
+//    GLuint _defaultFBOName;
     
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
-    GLuint _colorRenderbuffer;
+//    GLuint _colorRenderbuffer;
     CADisplayLink *_displayLink;
 #else
     CVDisplayLinkRef _displayLink;
@@ -35,7 +35,7 @@
     [self prepareView];
     [self makeCurrentContext];
     _babylonManager = [[BabylonManager alloc] init];
-    [_babylonManager initializeWithWidth:720 height:1280];
+//    [_babylonManager initializeWithWidth:720 height:1280];
 }
 
 #if TARGET_MACOS
@@ -95,11 +95,9 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
     _view.wantsBestResolutionOpenGLSurface = YES;
 
     // Default FBO is 0 on macOS since it uses a traditional OpenGL pixel format model
-    _defaultFBOName = 0;
     CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
     // Set the renderer output callback function
     CVDisplayLinkSetOutputCallback(_displayLink, &OpenGLDisplayLinkCallback, (__bridge void*)self);
-
     CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(_displayLink, _context.CGLContextObj, pixelFormat.CGLPixelFormatObj);
 }
 

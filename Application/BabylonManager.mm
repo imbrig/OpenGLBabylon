@@ -2,7 +2,7 @@
 #import "interface/BabylonLauncher.h"
 
 @interface BabylonManager()
-@property (nonatomic, readonly) BabylonLauncher* launcher;
+@property (nonatomic, readonly) Launcher::BabylonLauncher* launcher;
 @end
 
 @implementation BabylonManager
@@ -11,7 +11,9 @@
 {
   if(self = [super init])
   {
-    _launcher = new BabylonLauncher();
+    int width = 1280;
+    int height = 720;
+    _launcher = new Launcher::BabylonLauncher(width, height);
   }
   return self;
 }
@@ -23,17 +25,17 @@
 
 - (void)initializeWithWidth:(int)width height:(int)height
 {
-  _launcher->intialize(width, height);
+//  _launcher->intialize(width, height);
 }
 
 - (void)draw
 {
-  _launcher->draw();
+  _launcher->run();
 }
 
 - (void)update
 {
-  _launcher->update();
+//  _launcher->update();
 }
 
 @end
