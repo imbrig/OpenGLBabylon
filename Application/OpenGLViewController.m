@@ -16,10 +16,10 @@
 {
     OpenGLView *_view;
     PlatformGLContext *_context;
-//    GLuint _defaultFBOName;
+    GLuint _defaultFBOName;
     
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
-//    GLuint _colorRenderbuffer;
+    GLuint _colorRenderbuffer;
     CADisplayLink *_displayLink;
 #else
     CVDisplayLinkRef _displayLink;
@@ -34,8 +34,7 @@
     _view = (OpenGLView *)self.view;
     [self prepareView];
     [self makeCurrentContext];
-    _babylonManager = [[BabylonManager alloc] init];
-//    [_babylonManager initializeWithWidth:720 height:1280];
+    _babylonManager = [[BabylonManager alloc] initWithWidth:1280 height:720];
 }
 
 #if TARGET_MACOS
@@ -77,12 +76,14 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
     NSOpenGLPixelFormatAttribute attrs[] =
     {
-        NSOpenGLPFAColorSize, 32,
+        NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
+        NSOpenGLPFAColorSize, 24,
+        NSOpenGLPFAAlphaSize, 8,
         NSOpenGLPFADoubleBuffer,
         NSOpenGLPFADepthSize, 24,
         0
     };
-
+  
     NSOpenGLPixelFormat *pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
     NSAssert(pixelFormat, @"No OpenGL pixel format");
     _context = [[NSOpenGLContext alloc] initWithFormat:pixelFormat shareContext:nil];
@@ -95,6 +96,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
     _view.wantsBestResolutionOpenGLSurface = YES;
 
     // Default FBO is 0 on macOS since it uses a traditional OpenGL pixel format model
+    _defaultFBOName = 0;
     CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
     // Set the renderer output callback function
     CVDisplayLinkSetOutputCallback(_displayLink, &OpenGLDisplayLinkCallback, (__bridge void*)self);
@@ -108,7 +110,8 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
     NSSize viewSizePixels = [_view convertSizeToBacking:viewSizePoints];
     [self makeCurrentContext];
   
-    // TODO: Update size to Babylon
+    // Update size to Babylon
+    [_babylonManager setSizeWithWidth:viewSizePixels.width height:viewSizePixels.height];
   
     CGLUnlockContext(_context.CGLContextObj);
     if(!CVDisplayLinkIsRunning(_displayLink))

@@ -38,10 +38,13 @@ void BabylonLauncher::run()
 
 void BabylonLauncher::setSize(int width, int height)
 {
-  _width = width;
-  _height = height;
-  _renderCanvas->setFrameSize(_width, _height);
-  _renderableScene->getEngine()->resize();
+  if(_width != width || _height != height)
+  {
+    _width = width;
+    _height = height;
+    _renderCanvas->setFrameSize(_width, _height);
+    _renderableScene->getEngine()->resize();
+  }
 }
 
 } // end of namespace Launcher

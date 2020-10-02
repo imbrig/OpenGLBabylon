@@ -7,12 +7,10 @@
 
 @implementation BabylonManager
 
-- (instancetype)init
+- (instancetype)initWithWidth:(int)width height:(int)height
 {
   if(self = [super init])
   {
-    int width = 1280;
-    int height = 720;
     _launcher = new Launcher::BabylonLauncher(width, height);
   }
   return self;
@@ -23,9 +21,9 @@
   delete _launcher;
 }
 
-- (void)initializeWithWidth:(int)width height:(int)height
+- (void)setSizeWithWidth:(int)width height:(int)height
 {
-//  _launcher->intialize(width, height);
+  _launcher->setSize(width, height);
 }
 
 - (void)draw
@@ -35,7 +33,6 @@
 
 - (void)update
 {
-//  _launcher->update();
 }
 
 @end

@@ -4,8 +4,8 @@
 
 @interface BabylonManager : NSObject
 
-- (instancetype)init;
-- (void)initializeWithWidth:(int)width height:(int)height;
+- (instancetype)initWithWidth:(int)width height:(int)height;
+- (void)setSizeWithWidth:(int)width height:(int)height;
 - (void)draw;
 - (void)update;
 
