@@ -1,6 +1,17 @@
 #import "OpenGLViewController.h"
 #import "BabylonManager.h"
 
+#if TARGET_MACOS
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/gl.h>
+#import <OpenGL/gl3.h>
+#else // if (TARGET_IOS || TARGET_TVOS)
+#import <OpenGLES/EAGL.h>
+#import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+#import <OpenGLES/ES3/gl.h>
+#endif // !(TARGET_IOS || TARGET_TVOS)
+
 @implementation OpenGLView
 
 #if TARGET_IOS
@@ -154,7 +165,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
     eaglLayer.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking : @NO,
                                      kEAGLDrawablePropertyColorFormat     : kEAGLColorFormatRGBA8 };
     eaglLayer.opaque = YES;
-    _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
     NSAssert(_context, @"Could Not Create OpenGL ES Context");
     BOOL isSetCurrent = [EAGLContext setCurrentContext:_context];
     NSAssert(isSetCurrent, @"Could not make OpenGL ES context current");
@@ -196,7 +207,9 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
     glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
     [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
 
-    // TODO: Update size to Babylon
+    // Update size to Babylon
+    CGSize resolution = [self drawableSize];
+    [_babylonManager setSizeWithWidth:resolution.width height:resolution.height];
 }
 
 - (void)viewDidLayoutSubviews

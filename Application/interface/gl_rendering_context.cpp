@@ -150,8 +150,13 @@ bool GLRenderingContext::initialize(bool enableGLDebugging)
   // Log the GL version
   BABYLON_LOGF_INFO("GLRenderingContext", "Using GL version: %s", glGetString(GL_VERSION))
 
+#if TARGET_MACOS
   // Setup OpenGL options
   glEnable(GL_MULTISAMPLE);
+#else // if (TARGET_IOS || TARGET_TVOS)
+
+#endif // !(TARGET_IOS || TARGET_TVOS)
+  
   return true;
 }
 

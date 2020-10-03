@@ -1394,6 +1394,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05363A6E2527EB2900C4EBCA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		056CA3E22512B0A10078139A /* HelloScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloScene.cpp; sourceTree = "<group>"; };
 		056CA3E42512B0A10078139A /* HelloScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloScene.h; sourceTree = "<group>"; };
 		056CA3F92512D3830078139A /* gl_rendering_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gl_rendering_context.cpp; sourceTree = "<group>"; };
@@ -3198,6 +3199,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05363A6D2527EB2900C4EBCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05363A6E2527EB2900C4EBCA /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		056CA3F62512D3830078139A /* interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -6814,6 +6823,7 @@
 				3ABE33A120AE8A8D002FD18C /* Assets */,
 				3A206C3C208EE6A70092C542 /* Products */,
 				FB4B7970FB4B7F3000000001 /* Configuration */,
+				05363A6D2527EB2900C4EBCA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
