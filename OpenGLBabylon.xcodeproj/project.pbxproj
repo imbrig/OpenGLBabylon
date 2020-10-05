@@ -1379,6 +1379,30 @@
 		0595B243251186E700D05F0B /* axes_viewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595ACF0251186E400D05F0B /* axes_viewer.cpp */; };
 		0595B244251186E700D05F0B /* debug_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595ACF1251186E400D05F0B /* debug_layer.cpp */; };
 		0595B245251186E700D05F0B /* debug_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595ACF1251186E400D05F0B /* debug_layer.cpp */; };
+		0597BDC9252BAC420079539C /* wood_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDB2252BAC420079539C /* wood_procedural_texture.cpp */; };
+		0597BDCA252BAC420079539C /* wood_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDB2252BAC420079539C /* wood_procedural_texture.cpp */; };
+		0597BDCB252BAC420079539C /* marble_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDB4252BAC420079539C /* marble_procedural_texture.cpp */; };
+		0597BDCC252BAC420079539C /* marble_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDB4252BAC420079539C /* marble_procedural_texture.cpp */; };
+		0597BDCD252BAC420079539C /* grass_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDB6252BAC420079539C /* grass_procedural_texture.cpp */; };
+		0597BDCE252BAC420079539C /* grass_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDB6252BAC420079539C /* grass_procedural_texture.cpp */; };
+		0597BDCF252BAC420079539C /* starfield_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDB8252BAC420079539C /* starfield_procedural_texture.cpp */; };
+		0597BDD0252BAC420079539C /* starfield_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDB8252BAC420079539C /* starfield_procedural_texture.cpp */; };
+		0597BDD1252BAC420079539C /* road_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDBA252BAC420079539C /* road_procedural_texture.cpp */; };
+		0597BDD2252BAC420079539C /* road_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDBA252BAC420079539C /* road_procedural_texture.cpp */; };
+		0597BDD3252BAC420079539C /* fire_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDBC252BAC420079539C /* fire_procedural_texture.cpp */; };
+		0597BDD4252BAC420079539C /* fire_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDBC252BAC420079539C /* fire_procedural_texture.cpp */; };
+		0597BDD5252BAC420079539C /* brick_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDBE252BAC420079539C /* brick_procedural_texture.cpp */; };
+		0597BDD6252BAC420079539C /* brick_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDBE252BAC420079539C /* brick_procedural_texture.cpp */; };
+		0597BDD7252BAC420079539C /* cloud_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDC0252BAC420079539C /* cloud_procedural_texture.cpp */; };
+		0597BDD8252BAC430079539C /* cloud_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDC0252BAC420079539C /* cloud_procedural_texture.cpp */; };
+		0597BDD9252BAC430079539C /* normal_map_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDC2252BAC420079539C /* normal_map_procedural_texture.cpp */; };
+		0597BDDA252BAC430079539C /* normal_map_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDC2252BAC420079539C /* normal_map_procedural_texture.cpp */; };
+		0597BDDB252BAC430079539C /* perlin_noise_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDC4252BAC420079539C /* perlin_noise_procedural_texture.cpp */; };
+		0597BDDC252BAC430079539C /* perlin_noise_procedural_texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDC4252BAC420079539C /* perlin_noise_procedural_texture.cpp */; };
+		0597BDED252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDEB252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp */; };
+		0597BDEE252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDEB252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp */; };
+		0597BDEF252BB19F0079539C /* StarfieldProceduralTextureScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */; };
+		0597BDF0252BB19F0079539C /* StarfieldProceduralTextureScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */; };
 		0598FBD625145C4F0035F7FC /* BabylonLauncher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */; };
 		0598FBD725145C4F0035F7FC /* BabylonLauncher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */; };
 		3A206C43208EE6A70092C542 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A206C41208EE6A70092C542 /* Main.storyboard */; };
@@ -1396,7 +1420,7 @@
 /* Begin PBXFileReference section */
 		05363A6E2527EB2900C4EBCA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		056CA3E22512B0A10078139A /* HelloScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloScene.cpp; sourceTree = "<group>"; };
-		056CA3E42512B0A10078139A /* HelloScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloScene.h; sourceTree = "<group>"; };
+		056CA3E42512B0A10078139A /* MakeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeScene.h; sourceTree = "<group>"; };
 		056CA3F92512D3830078139A /* gl_rendering_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gl_rendering_context.cpp; sourceTree = "<group>"; };
 		056CA3FA2512D3830078139A /* canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = canvas.cpp; sourceTree = "<group>"; };
 		056CA3FB2512D3830078139A /* canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = canvas.h; sourceTree = "<group>"; };
@@ -3163,6 +3187,38 @@
 		0595ACEF251186E400D05F0B /* ray_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ray_helper.cpp; sourceTree = "<group>"; };
 		0595ACF0251186E400D05F0B /* axes_viewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = axes_viewer.cpp; sourceTree = "<group>"; };
 		0595ACF1251186E400D05F0B /* debug_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debug_layer.cpp; sourceTree = "<group>"; };
+		0597BD92252BAC420079539C /* wood_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wood_procedural_texture.h; sourceTree = "<group>"; };
+		0597BD93252BAC420079539C /* wood_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wood_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BD95252BAC420079539C /* marble_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = marble_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BD96252BAC420079539C /* marble_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = marble_procedural_texture.h; sourceTree = "<group>"; };
+		0597BD98252BAC420079539C /* grass_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grass_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BD99252BAC420079539C /* grass_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grass_procedural_texture.h; sourceTree = "<group>"; };
+		0597BD9B252BAC420079539C /* starfield_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = starfield_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BD9C252BAC420079539C /* starfield_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = starfield_procedural_texture.h; sourceTree = "<group>"; };
+		0597BD9E252BAC420079539C /* road_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = road_procedural_texture.h; sourceTree = "<group>"; };
+		0597BD9F252BAC420079539C /* road_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = road_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BDA1252BAC420079539C /* fire_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fire_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BDA2252BAC420079539C /* fire_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fire_procedural_texture.h; sourceTree = "<group>"; };
+		0597BDA4252BAC420079539C /* brick_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brick_procedural_texture.h; sourceTree = "<group>"; };
+		0597BDA5252BAC420079539C /* brick_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brick_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BDA7252BAC420079539C /* cloud_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cloud_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BDA8252BAC420079539C /* cloud_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cloud_procedural_texture.h; sourceTree = "<group>"; };
+		0597BDAA252BAC420079539C /* normal_map_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = normal_map_procedural_texture.h; sourceTree = "<group>"; };
+		0597BDAB252BAC420079539C /* normal_map_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = normal_map_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BDAD252BAC420079539C /* perlin_noise_procedural_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perlin_noise_procedural_texture.h; sourceTree = "<group>"; };
+		0597BDAE252BAC420079539C /* perlin_noise_procedural_texture_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perlin_noise_procedural_texture_fragment_fx.h; sourceTree = "<group>"; };
+		0597BDB2252BAC420079539C /* wood_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wood_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDB4252BAC420079539C /* marble_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = marble_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDB6252BAC420079539C /* grass_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grass_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDB8252BAC420079539C /* starfield_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = starfield_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDBA252BAC420079539C /* road_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = road_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDBC252BAC420079539C /* fire_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fire_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDBE252BAC420079539C /* brick_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brick_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDC0252BAC420079539C /* cloud_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cloud_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDC2252BAC420079539C /* normal_map_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = normal_map_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDC4252BAC420079539C /* perlin_noise_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = perlin_noise_procedural_texture.cpp; sourceTree = "<group>"; };
+		0597BDEB252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderMaterialDoubleHelixScene.cpp; sourceTree = "<group>"; };
+		0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarfieldProceduralTextureScene.cpp; sourceTree = "<group>"; };
 		0598FBD425145C4F0035F7FC /* BabylonLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonLauncher.h; sourceTree = "<group>"; };
 		0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BabylonLauncher.cpp; sourceTree = "<group>"; };
 		3A206C3B208EE6A70092C542 /* OpenGLBabylon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLBabylon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3210,8 +3266,10 @@
 		056CA3F62512D3830078139A /* interface */ = {
 			isa = PBXGroup;
 			children = (
+				0597BDEB252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp */,
+				0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */,
 				056CA3E22512B0A10078139A /* HelloScene.cpp */,
-				056CA3E42512B0A10078139A /* HelloScene.h */,
+				056CA3E42512B0A10078139A /* MakeScene.h */,
 				0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */,
 				0598FBD425145C4F0035F7FC /* BabylonLauncher.h */,
 				056CA3FA2512D3830078139A /* canvas.cpp */,
@@ -6814,11 +6872,250 @@
 			path = debug;
 			sourceTree = "<group>";
 		};
+		0597BD8B252BAC420079539C /* ProceduralTexturesLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD8E252BAC420079539C /* include */,
+				0597BDAF252BAC420079539C /* src */,
+			);
+			name = ProceduralTexturesLibrary;
+			path = BabylonCpp/src/ProceduralTexturesLibrary;
+			sourceTree = "<group>";
+		};
+		0597BD8E252BAC420079539C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD8F252BAC420079539C /* babylon */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0597BD8F252BAC420079539C /* babylon */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD90252BAC420079539C /* proceduraltextureslibrary */,
+			);
+			path = babylon;
+			sourceTree = "<group>";
+		};
+		0597BD90252BAC420079539C /* proceduraltextureslibrary */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD91252BAC420079539C /* wood */,
+				0597BD94252BAC420079539C /* marble */,
+				0597BD97252BAC420079539C /* grass */,
+				0597BD9A252BAC420079539C /* starfield */,
+				0597BD9D252BAC420079539C /* road */,
+				0597BDA0252BAC420079539C /* fire */,
+				0597BDA3252BAC420079539C /* brick */,
+				0597BDA6252BAC420079539C /* cloud */,
+				0597BDA9252BAC420079539C /* normalmap */,
+				0597BDAC252BAC420079539C /* perlinnoise */,
+			);
+			path = proceduraltextureslibrary;
+			sourceTree = "<group>";
+		};
+		0597BD91252BAC420079539C /* wood */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD92252BAC420079539C /* wood_procedural_texture.h */,
+				0597BD93252BAC420079539C /* wood_procedural_texture_fragment_fx.h */,
+			);
+			path = wood;
+			sourceTree = "<group>";
+		};
+		0597BD94252BAC420079539C /* marble */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD95252BAC420079539C /* marble_procedural_texture_fragment_fx.h */,
+				0597BD96252BAC420079539C /* marble_procedural_texture.h */,
+			);
+			path = marble;
+			sourceTree = "<group>";
+		};
+		0597BD97252BAC420079539C /* grass */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD98252BAC420079539C /* grass_procedural_texture_fragment_fx.h */,
+				0597BD99252BAC420079539C /* grass_procedural_texture.h */,
+			);
+			path = grass;
+			sourceTree = "<group>";
+		};
+		0597BD9A252BAC420079539C /* starfield */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD9B252BAC420079539C /* starfield_procedural_texture_fragment_fx.h */,
+				0597BD9C252BAC420079539C /* starfield_procedural_texture.h */,
+			);
+			path = starfield;
+			sourceTree = "<group>";
+		};
+		0597BD9D252BAC420079539C /* road */ = {
+			isa = PBXGroup;
+			children = (
+				0597BD9E252BAC420079539C /* road_procedural_texture.h */,
+				0597BD9F252BAC420079539C /* road_procedural_texture_fragment_fx.h */,
+			);
+			path = road;
+			sourceTree = "<group>";
+		};
+		0597BDA0252BAC420079539C /* fire */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDA1252BAC420079539C /* fire_procedural_texture_fragment_fx.h */,
+				0597BDA2252BAC420079539C /* fire_procedural_texture.h */,
+			);
+			path = fire;
+			sourceTree = "<group>";
+		};
+		0597BDA3252BAC420079539C /* brick */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDA4252BAC420079539C /* brick_procedural_texture.h */,
+				0597BDA5252BAC420079539C /* brick_procedural_texture_fragment_fx.h */,
+			);
+			path = brick;
+			sourceTree = "<group>";
+		};
+		0597BDA6252BAC420079539C /* cloud */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDA7252BAC420079539C /* cloud_procedural_texture_fragment_fx.h */,
+				0597BDA8252BAC420079539C /* cloud_procedural_texture.h */,
+			);
+			path = cloud;
+			sourceTree = "<group>";
+		};
+		0597BDA9252BAC420079539C /* normalmap */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDAA252BAC420079539C /* normal_map_procedural_texture.h */,
+				0597BDAB252BAC420079539C /* normal_map_procedural_texture_fragment_fx.h */,
+			);
+			path = normalmap;
+			sourceTree = "<group>";
+		};
+		0597BDAC252BAC420079539C /* perlinnoise */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDAD252BAC420079539C /* perlin_noise_procedural_texture.h */,
+				0597BDAE252BAC420079539C /* perlin_noise_procedural_texture_fragment_fx.h */,
+			);
+			path = perlinnoise;
+			sourceTree = "<group>";
+		};
+		0597BDAF252BAC420079539C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDB0252BAC420079539C /* proceduraltextureslibrary */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0597BDB0252BAC420079539C /* proceduraltextureslibrary */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDB1252BAC420079539C /* wood */,
+				0597BDB3252BAC420079539C /* marble */,
+				0597BDB5252BAC420079539C /* grass */,
+				0597BDB7252BAC420079539C /* starfield */,
+				0597BDB9252BAC420079539C /* road */,
+				0597BDBB252BAC420079539C /* fire */,
+				0597BDBD252BAC420079539C /* brick */,
+				0597BDBF252BAC420079539C /* cloud */,
+				0597BDC1252BAC420079539C /* normalmap */,
+				0597BDC3252BAC420079539C /* perlinnoise */,
+			);
+			path = proceduraltextureslibrary;
+			sourceTree = "<group>";
+		};
+		0597BDB1252BAC420079539C /* wood */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDB2252BAC420079539C /* wood_procedural_texture.cpp */,
+			);
+			path = wood;
+			sourceTree = "<group>";
+		};
+		0597BDB3252BAC420079539C /* marble */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDB4252BAC420079539C /* marble_procedural_texture.cpp */,
+			);
+			path = marble;
+			sourceTree = "<group>";
+		};
+		0597BDB5252BAC420079539C /* grass */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDB6252BAC420079539C /* grass_procedural_texture.cpp */,
+			);
+			path = grass;
+			sourceTree = "<group>";
+		};
+		0597BDB7252BAC420079539C /* starfield */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDB8252BAC420079539C /* starfield_procedural_texture.cpp */,
+			);
+			path = starfield;
+			sourceTree = "<group>";
+		};
+		0597BDB9252BAC420079539C /* road */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDBA252BAC420079539C /* road_procedural_texture.cpp */,
+			);
+			path = road;
+			sourceTree = "<group>";
+		};
+		0597BDBB252BAC420079539C /* fire */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDBC252BAC420079539C /* fire_procedural_texture.cpp */,
+			);
+			path = fire;
+			sourceTree = "<group>";
+		};
+		0597BDBD252BAC420079539C /* brick */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDBE252BAC420079539C /* brick_procedural_texture.cpp */,
+			);
+			path = brick;
+			sourceTree = "<group>";
+		};
+		0597BDBF252BAC420079539C /* cloud */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDC0252BAC420079539C /* cloud_procedural_texture.cpp */,
+			);
+			path = cloud;
+			sourceTree = "<group>";
+		};
+		0597BDC1252BAC420079539C /* normalmap */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDC2252BAC420079539C /* normal_map_procedural_texture.cpp */,
+			);
+			path = normalmap;
+			sourceTree = "<group>";
+		};
+		0597BDC3252BAC420079539C /* perlinnoise */ = {
+			isa = PBXGroup;
+			children = (
+				0597BDC4252BAC420079539C /* perlin_noise_procedural_texture.cpp */,
+			);
+			path = perlinnoise;
+			sourceTree = "<group>";
+		};
 		3A206C29208EE6A70092C542 = {
 			isa = PBXGroup;
 			children = (
 				0595A5AB251186DD00D05F0B /* BabylonCpp */,
 				0595A52D251186DC00D05F0B /* MaterialsLibrary */,
+				0597BD8B252BAC420079539C /* ProceduralTexturesLibrary */,
 				3AF26D20208FBB9E00203EB3 /* Application */,
 				3ABE33A120AE8A8D002FD18C /* Assets */,
 				3A206C3C208EE6A70092C542 /* Products */,
@@ -7005,6 +7302,8 @@
 				0595AD6E251186E500D05F0B /* khronos_texture_container.cpp in Sources */,
 				0595B194251186E700D05F0B /* bone_ik_controller.cpp in Sources */,
 				0595AE5E251186E500D05F0B /* light_block.cpp in Sources */,
+				0597BDDB252BAC430079539C /* perlin_noise_procedural_texture.cpp in Sources */,
+				0597BDCB252BAC420079539C /* marble_procedural_texture.cpp in Sources */,
 				0595B086251186E600D05F0B /* vertex_data.cpp in Sources */,
 				0595AD28251186E500D05F0B /* tri_planar_material.cpp in Sources */,
 				0595AE32251186E500D05F0B /* gradient_block.cpp in Sources */,
@@ -7122,6 +7421,7 @@
 				0595B0CA251186E700D05F0B /* multi_render_extension.cpp in Sources */,
 				0595ADCE251186E500D05F0B /* procedural_texture_scene_component.cpp in Sources */,
 				0595AF74251186E600D05F0B /* motion_blur_post_process.cpp in Sources */,
+				0597BDD1252BAC420079539C /* road_procedural_texture.cpp in Sources */,
 				0595AFC0251186E600D05F0B /* sphere_particle_emitter.cpp in Sources */,
 				0595B078251186E600D05F0B /* webgl_data_buffer.cpp in Sources */,
 				0595B126251186E700D05F0B /* increment_value_action.cpp in Sources */,
@@ -7202,6 +7502,7 @@
 				0595AE6A251186E500D05F0B /* color_merger_block.cpp in Sources */,
 				0595AEFC251186E600D05F0B /* gltf_file_loader.cpp in Sources */,
 				0595AEA6251186E600D05F0B /* node_material_connection_point.cpp in Sources */,
+				0597BDC9252BAC420079539C /* wood_procedural_texture.cpp in Sources */,
 				0595B238251186E700D05F0B /* input_manager.cpp in Sources */,
 				0595AF86251186E600D05F0B /* lens_flare_system.cpp in Sources */,
 				0595AE22251186E500D05F0B /* mod_block.cpp in Sources */,
@@ -7231,6 +7532,7 @@
 				0595AD14251186E500D05F0B /* fire_material_defines.cpp in Sources */,
 				0595AE98251186E600D05F0B /* reflectivity_block.cpp in Sources */,
 				0595B0CE251186E700D05F0B /* alpha_extension.cpp in Sources */,
+				0597BDD7252BAC420079539C /* cloud_procedural_texture.cpp in Sources */,
 				0595AD44251186E500D05F0B /* lens_flares_optimization.cpp in Sources */,
 				0595ADBE251186E500D05F0B /* env_texture_loader.cpp in Sources */,
 				0595B1A6251186E700D05F0B /* physics_joint.cpp in Sources */,
@@ -7252,6 +7554,7 @@
 				0595B1C8251186E700D05F0B /* shadow_light.cpp in Sources */,
 				0595AECC251186E600D05F0B /* imaterial_sheen_defines.cpp in Sources */,
 				0595B052251186E600D05F0B /* shape_builder.cpp in Sources */,
+				0597BDD9252BAC430079539C /* normal_map_procedural_texture.cpp in Sources */,
 				0595B070251186E600D05F0B /* decal_builder.cpp in Sources */,
 				0595B04E251186E600D05F0B /* lines_builder.cpp in Sources */,
 				0595B12C251186E700D05F0B /* switch_boolean_action.cpp in Sources */,
@@ -7306,6 +7609,7 @@
 				0595B15E251186E700D05F0B /* plane.cpp in Sources */,
 				0595AF10251186E600D05F0B /* highlight_layer.cpp in Sources */,
 				0595B1F8251186E700D05F0B /* pose_enabled_controller.cpp in Sources */,
+				0597BDEF252BB19F0079539C /* StarfieldProceduralTextureScene.cpp in Sources */,
 				0595AF08251186E600D05F0B /* effect_layer.cpp in Sources */,
 				0595B034251186E600D05F0B /* mesh.cpp in Sources */,
 				0595AFD6251186E600D05F0B /* intersection_info.cpp in Sources */,
@@ -7363,6 +7667,7 @@
 				0595AF92251186E600D05F0B /* decode_data_uri.cpp in Sources */,
 				0595B02A251186E600D05F0B /* scene_instrumentation.cpp in Sources */,
 				0595AF4A251186E600D05F0B /* post_process_render_effect.cpp in Sources */,
+				0597BDD3252BAC420079539C /* fire_procedural_texture.cpp in Sources */,
 				0595B02C251186E600D05F0B /* instanced_mesh.cpp in Sources */,
 				0595ACFC251186E500D05F0B /* water_material.cpp in Sources */,
 				0595AE92251186E600D05F0B /* refraction_block.cpp in Sources */,
@@ -7403,6 +7708,7 @@
 				0595AE20251186E500D05F0B /* worley_noise3d_block.cpp in Sources */,
 				0595AF82251186E600D05F0B /* post_process_manager.cpp in Sources */,
 				0595B020251186E600D05F0B /* arc_rotate_camera_mouse_wheel_input.cpp in Sources */,
+				0597BDED252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp in Sources */,
 				0595B1B2251186E700D05F0B /* physics_gravitational_field_event.cpp in Sources */,
 				0595B1C0251186E700D05F0B /* pointer_info_base.cpp in Sources */,
 				0595AD68251186E500D05F0B /* serialization_helper.cpp in Sources */,
@@ -7434,6 +7740,7 @@
 				0595B06A251186E600D05F0B /* hemisphere_builder.cpp in Sources */,
 				0595AE3A251186E500D05F0B /* derivative_block.cpp in Sources */,
 				0595AE84251186E600D05F0B /* particle_texture_block.cpp in Sources */,
+				0597BDCD252BAC420079539C /* grass_procedural_texture.cpp in Sources */,
 				0595AD54251186E500D05F0B /* panorama_to_cube_map_tools.cpp in Sources */,
 				0595AF34251186E600D05F0B /* refraction_post_process.cpp in Sources */,
 				0595AD42251186E500D05F0B /* merge_meshes_optimization.cpp in Sources */,
@@ -7557,9 +7864,11 @@
 				0595ADEA251186E500D05F0B /* effect.cpp in Sources */,
 				0595AEB6251186E600D05F0B /* pbr_sub_surface_configuration.cpp in Sources */,
 				0595AF3E251186E600D05F0B /* bloom_merge_post_process.cpp in Sources */,
+				0597BDCF252BAC420079539C /* starfield_procedural_texture.cpp in Sources */,
 				0595AEFE251186E600D05F0B /* binary_reader.cpp in Sources */,
 				0595ADE2251186E500D05F0B /* image_processing_configuration_defines.cpp in Sources */,
 				0595AFC2251186E600D05F0B /* box_particle_emitter.cpp in Sources */,
+				0597BDD5252BAC420079539C /* brick_procedural_texture.cpp in Sources */,
 				0595B0B2251186E600D05F0B /* attach_to_box_behavior.cpp in Sources */,
 				0595B0C8251186E700D05F0B /* render_target_extension.cpp in Sources */,
 				0595B140251186E700D05F0B /* bezier_curve.cpp in Sources */,
@@ -7765,6 +8074,7 @@
 				0595AD07251186E500D05F0B /* mix_material_defines.cpp in Sources */,
 				0595AF43251186E600D05F0B /* pass_cube_post_process.cpp in Sources */,
 				0595ADF5251186E500D05F0B /* effect_wrapper.cpp in Sources */,
+				0597BDEE252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp in Sources */,
 				0595ADA7251186E500D05F0B /* mirror_texture.cpp in Sources */,
 				0595B0E9251186E700D05F0B /* shader_code_inliner.cpp in Sources */,
 				0595AD11251186E500D05F0B /* cell_material.cpp in Sources */,
@@ -7914,6 +8224,7 @@
 				0595AF25251186E600D05F0B /* rotation_gizmo.cpp in Sources */,
 				0595B145251186E700D05F0B /* frustum.cpp in Sources */,
 				0595B03B251186E600D05F0B /* polygon.cpp in Sources */,
+				0597BDD4252BAC420079539C /* fire_procedural_texture.cpp in Sources */,
 				0595B20D251186E700D05F0B /* quartic_ease.cpp in Sources */,
 				0595B07D251186E600D05F0B /* buffer.cpp in Sources */,
 				0595ADA3251186E500D05F0B /* cube_texture.cpp in Sources */,
@@ -7924,6 +8235,7 @@
 				0595B1A3251186E700D05F0B /* hinge_joint.cpp in Sources */,
 				0595ACF9251186E500D05F0B /* sky_material.cpp in Sources */,
 				0595AE37251186E500D05F0B /* opposite_block.cpp in Sources */,
+				0597BDD6252BAC420079539C /* brick_procedural_texture.cpp in Sources */,
 				0595B15D251186E700D05F0B /* color4.cpp in Sources */,
 				0595AD49251186E500D05F0B /* hardware_scaling_optimization.cpp in Sources */,
 				0595AEC9251186E600D05F0B /* imaterial_clear_coat_defines.cpp in Sources */,
@@ -7965,6 +8277,7 @@
 				0595AE75251186E500D05F0B /* light_information_block.cpp in Sources */,
 				0595B15B251186E700D05F0B /* spherical_polynomial.cpp in Sources */,
 				0595ADEF251186E500D05F0B /* shadow_depth_wrapper.cpp in Sources */,
+				0597BDDA252BAC430079539C /* normal_map_procedural_texture.cpp in Sources */,
 				0595AEB5251186E600D05F0B /* pbr_base_simple_material.cpp in Sources */,
 				0595B035251186E600D05F0B /* mesh.cpp in Sources */,
 				0595AF7B251186E600D05F0B /* glow_blur_post_process.cpp in Sources */,
@@ -8017,6 +8330,7 @@
 				0595AF61251186E600D05F0B /* circle_of_confusion_post_process.cpp in Sources */,
 				0595B123251186E700D05F0B /* play_animation_action.cpp in Sources */,
 				0595AD3D251186E500D05F0B /* post_processes_optimization.cpp in Sources */,
+				0597BDCC252BAC420079539C /* marble_procedural_texture.cpp in Sources */,
 				0595B1C3251186E700D05F0B /* texture_dome.cpp in Sources */,
 				0595B1A1251186E700D05F0B /* distance_joint.cpp in Sources */,
 				0595ACF3251186E500D05F0B /* gradient_material.cpp in Sources */,
@@ -8052,6 +8366,7 @@
 				0595AF63251186E600D05F0B /* fxaa_post_process.cpp in Sources */,
 				0595B049251186E600D05F0B /* polygon_points.cpp in Sources */,
 				0595AEB1251186E600D05F0B /* imaterial_detail_map_defines.cpp in Sources */,
+				0597BDD8252BAC430079539C /* cloud_procedural_texture.cpp in Sources */,
 				0595AD65251186E500D05F0B /* min_max_reducer.cpp in Sources */,
 				0595B223251186E700D05F0B /* ianimation_key.cpp in Sources */,
 				0595AFCD251186E600D05F0B /* solid_particle.cpp in Sources */,
@@ -8074,6 +8389,7 @@
 				0595B125251186E700D05F0B /* execute_code_action.cpp in Sources */,
 				0595AE01251186E500D05F0B /* reflect_block.cpp in Sources */,
 				0595AF87251186E600D05F0B /* lens_flare_system.cpp in Sources */,
+				0597BDCA252BAC420079539C /* wood_procedural_texture.cpp in Sources */,
 				0595AEC1251186E600D05F0B /* pbr_base_material.cpp in Sources */,
 				0595B103251186E700D05F0B /* ipipeline_context.cpp in Sources */,
 				0595B063251186E600D05F0B /* torus_knot_builder.cpp in Sources */,
@@ -8128,6 +8444,7 @@
 				0595AD1F251186E500D05F0B /* normal_material_defines.cpp in Sources */,
 				0595B16B251186E700D05F0B /* depth_renderer.cpp in Sources */,
 				0595AF8B251186E600D05F0B /* morph_target_manager.cpp in Sources */,
+				0597BDCE252BAC420079539C /* grass_procedural_texture.cpp in Sources */,
 				0595B029251186E600D05F0B /* engine_instrumentation.cpp in Sources */,
 				0595AE8D251186E600D05F0B /* ambient_occlusion_block.cpp in Sources */,
 				0595ACFF251186E500D05F0B /* shadow_only_material_defines.cpp in Sources */,
@@ -8141,6 +8458,7 @@
 				0595B135251186E700D05F0B /* action.cpp in Sources */,
 				0595AD7F251186E500D05F0B /* pivot_tools.cpp in Sources */,
 				0595B0DD251186E700D05F0B /* multiview_extension.cpp in Sources */,
+				0597BDF0252BB19F0079539C /* StarfieldProceduralTextureScene.cpp in Sources */,
 				0595AED9251186E600D05F0B /* timer_unix.cpp in Sources */,
 				0595AD75251186E500D05F0B /* tools.cpp in Sources */,
 				0595AF89251186E600D05F0B /* lens_flare_system_scene_component.cpp in Sources */,
@@ -8187,6 +8505,7 @@
 				0595B0D5251186E700D05F0B /* occlusion_query_extension.cpp in Sources */,
 				0595AFB3251186E600D05F0B /* sphere_directed_particle_emitter.cpp in Sources */,
 				0595B039251186E600D05F0B /* node.cpp in Sources */,
+				0597BDDC252BAC430079539C /* perlin_noise_procedural_texture.cpp in Sources */,
 				0595B0AF251186E600D05F0B /* multi_pointer_scale_behavior.cpp in Sources */,
 				0595AF5F251186E600D05F0B /* highlights_post_process.cpp in Sources */,
 				0595AEDD251186E600D05F0B /* timer_win32.cpp in Sources */,
@@ -8230,6 +8549,7 @@
 				0595B00D251186E600D05F0B /* fly_camera_mouse_input.cpp in Sources */,
 				0595ACF5251186E500D05F0B /* gradient_material_defines.cpp in Sources */,
 				0595AF35251186E600D05F0B /* refraction_post_process.cpp in Sources */,
+				0597BDD2252BAC420079539C /* road_procedural_texture.cpp in Sources */,
 				0595B03D251186E600D05F0B /* vertex.cpp in Sources */,
 				0595AF71251186E600D05F0B /* filter_post_process.cpp in Sources */,
 				0595B0D7251186E700D05F0B /* transform_feedback_extension.cpp in Sources */,
@@ -8349,6 +8669,7 @@
 				0595B06D251186E600D05F0B /* plane_builder.cpp in Sources */,
 				0595AEDF251186E600D05F0B /* system.cpp in Sources */,
 				0595B23D251186E700D05F0B /* skeleton_viewer.cpp in Sources */,
+				0597BDD0252BAC420079539C /* starfield_procedural_texture.cpp in Sources */,
 				0595AFC1251186E600D05F0B /* sphere_particle_emitter.cpp in Sources */,
 				0595AFAB251186E600D05F0B /* solid_particle_system.cpp in Sources */,
 				0595AE9D251186E600D05F0B /* node_material_connection_point_custom_object.cpp in Sources */,
@@ -8454,12 +8775,14 @@
 				HEADER_SEARCH_PATHS = (
 					$SRCROOT/BabylonCpp/src/BabylonCpp/include,
 					$SRCROOT/BabylonCpp/src/MaterialsLibrary/include,
+					$SRCROOT/BabylonCpp/src/ProceduralTexturesLibrary/include,
 					$SRCROOT/BabylonCpp/external/json.hpp,
 					$SRCROOT/BabylonCpp/external/stb_image/include,
 					$SRCROOT/BabylonCpp/external/earcut.hpp/include/mapbox,
 					$SRCROOT/BabylonCpp/external/glad/include,
 					$SRCROOT/config/BabylonCpp/include,
 					$SRCROOT/config/MaterialsLibrary/include,
+					$SRCROOT/config/ProceduralTexturesLibrary/include,
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -8520,12 +8843,14 @@
 				HEADER_SEARCH_PATHS = (
 					$SRCROOT/BabylonCpp/src/BabylonCpp/include,
 					$SRCROOT/BabylonCpp/src/MaterialsLibrary/include,
+					$SRCROOT/BabylonCpp/src/ProceduralTexturesLibrary/include,
 					$SRCROOT/BabylonCpp/external/json.hpp,
 					$SRCROOT/BabylonCpp/external/stb_image/include,
 					$SRCROOT/BabylonCpp/external/earcut.hpp/include/mapbox,
 					$SRCROOT/BabylonCpp/external/glad/include,
 					$SRCROOT/config/BabylonCpp/include,
 					$SRCROOT/config/MaterialsLibrary/include,
+					$SRCROOT/config/ProceduralTexturesLibrary/include,
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -8577,12 +8902,14 @@
 				HEADER_SEARCH_PATHS = (
 					$SRCROOT/BabylonCpp/src/BabylonCpp/include,
 					$SRCROOT/BabylonCpp/src/MaterialsLibrary/include,
+					$SRCROOT/BabylonCpp/src/ProceduralTexturesLibrary/include,
 					$SRCROOT/BabylonCpp/external/json.hpp,
 					$SRCROOT/BabylonCpp/external/stb_image/include,
 					$SRCROOT/BabylonCpp/external/earcut.hpp/include/mapbox,
 					$SRCROOT/BabylonCpp/external/glad/include,
 					$SRCROOT/config/BabylonCpp/include,
 					$SRCROOT/config/MaterialsLibrary/include,
+					$SRCROOT/config/ProceduralTexturesLibrary/include,
 				);
 				INFOPLIST_FILE = Application/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -8644,12 +8971,14 @@
 				HEADER_SEARCH_PATHS = (
 					$SRCROOT/BabylonCpp/src/BabylonCpp/include,
 					$SRCROOT/BabylonCpp/src/MaterialsLibrary/include,
+					$SRCROOT/BabylonCpp/src/ProceduralTexturesLibrary/include,
 					$SRCROOT/BabylonCpp/external/json.hpp,
 					$SRCROOT/BabylonCpp/external/stb_image/include,
 					$SRCROOT/BabylonCpp/external/earcut.hpp/include/mapbox,
 					$SRCROOT/BabylonCpp/external/glad/include,
 					$SRCROOT/config/BabylonCpp/include,
 					$SRCROOT/config/MaterialsLibrary/include,
+					$SRCROOT/config/ProceduralTexturesLibrary/include,
 				);
 				INFOPLIST_FILE = Application/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -1,5 +1,5 @@
 #include "BabylonLauncher.h"
-#include "HelloScene.h"
+#include "MakeScene.h"
 #include "canvas.h"
 
 // Babylon
@@ -21,7 +21,9 @@ BabylonLauncher::BabylonLauncher(int width, int height):
     return;
   }
   _renderCanvas->setFrameSize(_width, _height);
-  _renderableScene = MakeHelloScene();
+  _renderableScene = Samples::MakeHelloScene(_renderCanvas.get());
+//  _renderableScene = Samples::MakeStarfieldProceduralTextureScene(_renderCanvas.get());
+//  _renderableScene = Samples::MakeShaderMaterialDoubleHelixScene(_renderCanvas.get());
   _renderableScene->initialize(_renderCanvas.get());
   _intialized = true;
 }

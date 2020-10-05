@@ -1,4 +1,4 @@
-#include "HelloScene.h"
+#include "MakeScene.h"
 
 #include <babylon/cameras/free_camera.h>
 #include <babylon/lights/hemispheric_light.h>
@@ -14,19 +14,20 @@
 #include <iostream>
 #include <stdexcept>
 
-#define LOG_OBJECT_ADRESS(variable_name, message) \
-std::cout << (message) << ": " << #variable_name << " addr=" << (void *)(&variable_name) << "\n";
-#define LOG_POINTER_ADRESS(variable_name, message) \
-std::cout << message << ": " << #variable_name << " addr=" << (void *)(variable_name) << "\n";
+namespace Samples {
+using namespace BABYLON;
 
 // This files demonstrates how to create a very simple renderable scene
-struct HelloScene : public BABYLON::IRenderableScene
+struct HelloScene : public IRenderableScene
 {
-  HelloScene(){}
+public:
+  HelloScene(ICanvas* iCanvas) : IRenderableScene(iCanvas)
+  {
+  }
   
   const char* getName() override { return "Hello Scene"; }
 
-  void initializeScene(BABYLON::ICanvas* canvas, BABYLON::Scene* scene) override
+  void initializeScene(ICanvas* canvas, Scene* scene) override
   {
     using namespace BABYLON;
     scene->clearColor = Color4(0.4f, 0.1f, 0.2f, 1.f);
@@ -74,7 +75,9 @@ struct HelloScene : public BABYLON::IRenderableScene
   }
 };
 
-std::shared_ptr<BABYLON::IRenderableScene> MakeHelloScene()
+std::shared_ptr<IRenderableScene> MakeHelloScene(ICanvas* canvas)
 {
-  return std::make_shared<HelloScene>();
+  return std::make_shared<HelloScene>(canvas);
 }
+
+} // end of namespace Samples
