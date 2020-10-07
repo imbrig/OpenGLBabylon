@@ -1,4 +1,5 @@
 #define GL_SILENCE_DEPRECATION
+#import <Foundation/Foundation.h>
 
 #import "OpenGLViewController.h"
 #import "BabylonManager.h"
@@ -25,6 +26,33 @@
 
 @end
 
+typedef struct {
+    float Position[3];
+    float Color[4];
+//    float TexCoord[2]; // New
+} Vertex;
+
+//#define TEX_COORD_MAX   4
+//
+//const Vertex Vertices[] = {
+//    {{1, -1, 0}, {1, 0, 0, 1}, {TEX_COORD_MAX, 0}},
+//    {{1, 1, 0}, {0, 1, 0, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+//    {{-1, 1, 0}, {0, 0, 1, 1}, {0, TEX_COORD_MAX}},
+//    {{-1, -1, 0}, {0, 0, 0, 1}, {0, 0}}
+//};
+
+const Vertex Vertices[] = {
+  {{1, -1, 0}, {1, 0, 0, 1}},
+  {{1, 1, 0}, {0, 1, 0, 1}},
+  {{-1, 1, 0}, {0, 0, 1, 1}},
+  {{-1, -1, 0}, {0, 0, 0, 1}}
+};
+
+const GLubyte Indices[] = {
+  0, 1, 2,
+  2, 3, 0
+};
+
 @implementation OpenGLViewController
 {
   OpenGLView *_view;
@@ -34,7 +62,15 @@
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
   CAEAGLLayer* _eaglLayer;
   GLuint _colorRenderBuffer;
-  GLuint _depthRenderBuffer;
+//  GLuint _depthRenderBuffer;
+  
+  GLuint _vertexBuffer;
+  GLuint _indexBuffer;
+  
+  GLuint _positionSlot;
+  GLuint _colorSlot;
+//  GLuint _texCoordSlot;
+  
   CADisplayLink *_displayLink;
 #else
   CVDisplayLinkRef _displayLink;
@@ -49,7 +85,7 @@
   [self prepareView];
   [self makeCurrentContext];
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
-  _babylonManager = [[BabylonManager alloc] initWithWidth:750 height:1296];
+  _babylonManager = [[BabylonManager alloc] initWithWidth:_view.frame.size.width*2 height:_view.frame.size.height*2];
 #else
   _babylonManager = [[BabylonManager alloc] initWithWidth:1280 height:720];
 #endif
@@ -158,13 +194,32 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   [EAGLContext setCurrentContext:_context];
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_BLEND);
-  glEnable(GL_DEPTH_TEST);
+
+  glClearColor(0.5, 0.5, 0.5, 1.0);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//  glEnable(GL_DEPTH_TEST);
   
-  glViewport(0, 0, 750, 1296);
+//  NSLog(@"ViewSize %f %f", _view.frame.size.width, _view.frame.size.height);
+  glViewport(0, 0, _view.frame.size.width, _view.frame.size.height);
   
+  
+  glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
+  
+  glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+  glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
+  
+//  glVertexAttribPointer(_texCoordSlot, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 7));
+  
+  glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
+  
+//  glActiveTexture(GL_TEXTURE0);
+//  glBindTexture(GL_TEXTURE_2D, _floorTexture);
+//  glUniform1i(_textureUniform, 0);
+  
+//  glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   [_babylonManager draw];
   
-  glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
@@ -180,7 +235,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 //  [self makeCurrentContext];
   self.view.contentScaleFactor = [UIScreen mainScreen].nativeScale;
   
-  [self setupDepthBuffer];
+//  [self setupDepthBuffer];
   [self setupRenderBuffer];
   [self setupFrameBuffer];
   
@@ -192,6 +247,9 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 //  [self resizeDrawable];
 //  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorRenderBuffer);
 
+  [self compileShaders];
+  [self setupVBO];
+  
   [self setupDisplayLink];
 }
 
@@ -224,8 +282,8 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
 
   // Update size to Babylon
-  CGSize resolution = [self drawableSize];
-  [_babylonManager setSizeWithWidth:resolution.width height:resolution.height];
+  CGSize resolution = _view.frame.size;//[self drawableSize];
+  [_babylonManager setSizeWithWidth:resolution.width*2 height:resolution.height*2];
 }
 
 - (void)setupLayer
@@ -249,23 +307,93 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
   glGenRenderbuffers(1, &_colorRenderBuffer);
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
-  [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];
+//  [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];
 }
 
-- (void)setupDepthBuffer
-{
-  CGSize resolution = {750, 1296};//[self drawableSize];
-  glGenRenderbuffers(1, &_depthRenderBuffer);
-  glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, resolution.width, resolution.height);
-}
+//- (void)setupDepthBuffer
+//{
+//  CGSize resolution = {750, 1296};//[self drawableSize];
+//  glGenRenderbuffers(1, &_depthRenderBuffer);
+//  glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
+//  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, resolution.width, resolution.height);
+//}
 
 - (void)setupFrameBuffer
 {
+  _defaultFrameBuffer = 0;
   glGenFramebuffers(1, &_defaultFrameBuffer);
   glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);
   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorRenderBuffer);
-  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
+//  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
+}
+
+- (GLuint)compileShader:(NSString*)shaderString withType:(GLenum)shaderType
+{
+    GLuint shaderHandle = glCreateShader(shaderType);
+    const char * shaderStringUTF8 = [shaderString UTF8String];
+    int shaderStringLength = (int)[shaderString length];
+    glShaderSource(shaderHandle, 1, &shaderStringUTF8, &shaderStringLength);
+    glCompileShader(shaderHandle);
+    GLint compileSuccess;
+    glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &compileSuccess);
+    if(compileSuccess == GL_FALSE)
+    {
+        GLchar messages[256];
+        glGetShaderInfoLog(shaderHandle, sizeof(messages), 0, &messages[0]);
+        NSString *messageString = [NSString stringWithUTF8String:messages];
+        NSLog(@"%@", messageString);
+        exit(1);
+    }
+    return shaderHandle;
+}
+
+- (void)compileShaders
+{
+  NSString * vertexString =  @"attribute vec4 Position;\n"
+                              "attribute vec4 SourceColor;\n"
+                              "varying vec4 DestinationColor;\n"
+                              "void main(void) {\n"
+                              "  DestinationColor = SourceColor;\n"
+                              "  gl_Position = Position; }\n";
+
+  NSString * fragmentString =  @"varying lowp vec4 DestinationColor;\n"
+                                "void main(void) {;\n"
+                                "  gl_FragColor = DestinationColor; }\n";
+  
+  GLuint vertexShader = [self compileShader:vertexString withType:GL_VERTEX_SHADER];
+  GLuint fragmentShader = [self compileShader:fragmentString withType:GL_FRAGMENT_SHADER];
+  
+  GLuint programHandle = glCreateProgram();
+  glAttachShader(programHandle, vertexShader);
+  glAttachShader(programHandle, fragmentShader);
+  glLinkProgram(programHandle);
+  GLint linkSuccess;
+  glGetProgramiv(programHandle, GL_LINK_STATUS, &linkSuccess);
+  if(linkSuccess == GL_FALSE)
+  {
+    GLchar messages[256];
+    glGetProgramInfoLog(programHandle, sizeof(messages), 0, &messages[0]);
+    NSString *messageString = [NSString stringWithUTF8String:messages];
+    NSLog(@"%@", messageString);
+    exit(1);
+  }
+  
+  glUseProgram(programHandle);
+  _positionSlot = glGetAttribLocation(programHandle, "Position");
+  _colorSlot = glGetAttribLocation(programHandle, "SourceColor");
+  glEnableVertexAttribArray(_positionSlot);
+  glEnableVertexAttribArray(_colorSlot);
+}
+
+- (void)setupVBO
+{
+  glGenBuffers(1, &_vertexBuffer);
+  glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+  
+  glGenBuffers(1, &_indexBuffer);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
 }
 
 - (void)viewDidLayoutSubviews
