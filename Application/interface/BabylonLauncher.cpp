@@ -45,7 +45,9 @@ void BabylonLauncher::run()
   _renderableScene->render();
   _renderCanvas->unbind();
   
-  unsigned int id = _renderCanvas->textureId();
+//  unsigned int frameBufferId = _renderCanvas->frameBufferId();
+//  unsigned int colorBufferId = _renderCanvas->colorBufferId();
+//  unsigned int renderBufferId = _renderCanvas->renderBufferId();
 }
 
 void BabylonLauncher::setSize(int width, int height)
@@ -58,5 +60,9 @@ void BabylonLauncher::setSize(int width, int height)
     _renderableScene->getEngine()->resize();
   }
 }
+
+//unsigned int BabylonLauncher::textureId()
+//{
+//}
 
 } // end of namespace Launcher

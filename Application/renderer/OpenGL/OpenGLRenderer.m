@@ -3,7 +3,6 @@
 
 @implementation OpenGLRenderer
 {
-  GLuint _defaultFBOName;
   CGSize _viewSize;
   GLuint _programName;
   GLuint _vaoName;
@@ -18,14 +17,13 @@ enum {
   TEXCOORD_ATTRIB_IDX
 };
 
-- (instancetype)initWithDefaultFBOName:(GLuint)defaultFBOName
+- (instancetype)init
 {
   self = [super init];
   if(self)
   {
     NSLog(@"%s %s", glGetString(GL_RENDERER), glGetString(GL_VERSION));
     // Build all of our objects and setup initial state here
-    _defaultFBOName = defaultFBOName;
     _vaoName = [self buildVAO];
   }
   return self;
@@ -267,10 +265,10 @@ enum {
   return prgName;
 }
 
-- (void)draw
+- (void)draw:(GLuint)defaultFrameBuffer
 {
-  glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBOName);
-//  glClearColor(0.25, 0, 0.5, 1);
+  glBindFramebuffer(GL_FRAMEBUFFER, defaultFrameBuffer);
+  glClearColor(0.25, 0, 0.5, 1);
 
   glClear(GL_COLOR_BUFFER_BIT);
   glUseProgram(_programName);

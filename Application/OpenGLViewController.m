@@ -36,14 +36,14 @@
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
   OpenGLRenderer *_openGLRenderer;
   GLuint _defaultFrameBuffer;
+  GLuint _colorRenderBuffer;
   
   CAEAGLLayer* _eaglLayer;
-  GLuint _colorRenderBuffer;
   CADisplayLink *_displayLink;
 #else
   CVDisplayLinkRef _displayLink;
 #endif
-  BabylonManager *_babylonManager;
+//  BabylonManager *_babylonManager;
 }
 
 - (void)viewDidLoad
@@ -55,15 +55,14 @@
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
   // Default FBO is 0 on macOS since it uses a traditional OpenGL pixel format model
 //  _defaultFrameBuffer = 0;
+//  _babylonManager = [[BabylonManager alloc] initWithWidth:_view.frame.size.width*2 height:_view.frame.size.height*2];
   
-  _babylonManager = [[BabylonManager alloc] initWithWidth:_view.frame.size.width*2 height:_view.frame.size.height*2];
-  _openGLRenderer = [[OpenGLRenderer alloc] initWithDefaultFBOName:_defaultFrameBuffer];
+  _openGLRenderer = [[OpenGLRenderer alloc] init];
   [_openGLRenderer useTextureFromFileAsBaseMap];
   [_openGLRenderer resize:self.drawableSize];
 #else
   _babylonManager = [[BabylonManager alloc] initWithWidth:1280 height:720];
 #endif
-
 }
 
 #if TARGET_MACOS
@@ -164,9 +163,9 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 - (void)draw:(id)sender
 {
   [EAGLContext setCurrentContext:_context];
-  [_babylonManager draw];
+//  [_babylonManager draw];
   
-  [_openGLRenderer draw];
+  [_openGLRenderer draw:_defaultFrameBuffer];
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
@@ -217,13 +216,14 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   [self setupContext];
   [self makeCurrentContext];
   self.view.contentScaleFactor = [UIScreen mainScreen].nativeScale;
+//  _babylonManager = [[BabylonManager alloc] initWithWidth:_view.frame.size.width height:_view.frame.size.height];
   [self setupRenderBuffer];
   [self setupDisplayLink];
 }
 
 - (CGSize)drawableSize
 {
-  GLint backingWidth, backingHeight;
+  GLint backingWidth = 0, backingHeight = 0;
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
   glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight);
@@ -233,76 +233,22 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 
 - (void)resizeDrawable
 {
-  [self makeCurrentContext];
+//  [self makeCurrentContext];
 
   // Ensure we've actually got a render buffer first;
   assert(_colorRenderBuffer != 0);
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
-  [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
-  [_openGLRenderer resize:self.drawableSize];
+  
+  CGSize drawSize = [self drawableSize];
+  [_openGLRenderer resize:drawSize];
   
   // Update size to Babylon
-  CGSize resolution = _view.frame.size;//[self drawableSize];
-  [_babylonManager setSizeWithWidth:resolution.width*2 height:resolution.height*2];
+//  [_babylonManager setSizeWithWidth:drawSize.width height:drawSize.height];
+//  CGSize resolution = _view.frame.size;
+//  [_babylonManager setSizeWithWidth:resolution.width height:resolution.height];
+  
+  [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
 }
-
-//- (GLuint)compileShader:(NSString*)shaderString withType:(GLenum)shaderType
-//{
-//    GLuint shaderHandle = glCreateShader(shaderType);
-//    const char * shaderStringUTF8 = [shaderString UTF8String];
-//    int shaderStringLength = (int)[shaderString length];
-//    glShaderSource(shaderHandle, 1, &shaderStringUTF8, &shaderStringLength);
-//    glCompileShader(shaderHandle);
-//    GLint compileSuccess;
-//    glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &compileSuccess);
-//    if(compileSuccess == GL_FALSE)
-//    {
-//        GLchar messages[256];
-//        glGetShaderInfoLog(shaderHandle, sizeof(messages), 0, &messages[0]);
-//        NSString *messageString = [NSString stringWithUTF8String:messages];
-//        NSLog(@"%@", messageString);
-//        exit(1);
-//    }
-//    return shaderHandle;
-//}
-
-//- (void)compileShaders
-//{
-//  NSString * vertexString =  @"attribute vec4 Position;\n"
-//                              "attribute vec4 SourceColor;\n"
-//                              "varying vec4 DestinationColor;\n"
-//                              "void main(void) {\n"
-//                              "  DestinationColor = SourceColor;\n"
-//                              "  gl_Position = Position; }\n";
-//
-//  NSString * fragmentString =  @"varying lowp vec4 DestinationColor;\n"
-//                                "void main(void) {;\n"
-//                                "  gl_FragColor = DestinationColor; }\n";
-//
-//  GLuint vertexShader = [self compileShader:vertexString withType:GL_VERTEX_SHADER];
-//  GLuint fragmentShader = [self compileShader:fragmentString withType:GL_FRAGMENT_SHADER];
-//
-//  GLuint programHandle = glCreateProgram();
-//  glAttachShader(programHandle, vertexShader);
-//  glAttachShader(programHandle, fragmentShader);
-//  glLinkProgram(programHandle);
-//  GLint linkSuccess;
-//  glGetProgramiv(programHandle, GL_LINK_STATUS, &linkSuccess);
-//  if(linkSuccess == GL_FALSE)
-//  {
-//    GLchar messages[256];
-//    glGetProgramInfoLog(programHandle, sizeof(messages), 0, &messages[0]);
-//    NSString *messageString = [NSString stringWithUTF8String:messages];
-//    NSLog(@"%@", messageString);
-//    exit(1);
-//  }
-//
-//  glUseProgram(programHandle);
-//  _positionSlot = glGetAttribLocation(programHandle, "Position");
-//  _colorSlot = glGetAttribLocation(programHandle, "SourceColor");
-//  glEnableVertexAttribArray(_positionSlot);
-//  glEnableVertexAttribArray(_colorSlot);
-//}
 
 - (void)viewDidLayoutSubviews
 {

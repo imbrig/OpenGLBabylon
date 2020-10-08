@@ -4,8 +4,8 @@
 
 @interface OpenGLRenderer : NSObject
 
-- (instancetype)initWithDefaultFBOName:(GLuint)defaultFBOName;
-- (void)draw;
+- (instancetype)init;
+- (void)draw:(GLuint)defaultFrameBuffer;
 - (void)resize:(CGSize)size;
 - (void)useTextureFromFileAsBaseMap;
 

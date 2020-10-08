@@ -24,7 +24,9 @@ public:
   void bind();
   void unbind();
 
-  unsigned int textureId();
+  unsigned int frameBufferId();
+  unsigned int colorBufferId();
+  unsigned int renderBufferId();
 
 private:
   std::shared_ptr<BABYLON::GL::IGLFramebuffer> mFrameBuffer;

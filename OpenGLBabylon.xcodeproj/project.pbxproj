@@ -3289,11 +3289,11 @@
 		05589B93252D741D00A0643D /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				05589B98252D741D00A0643D /* OpenGLRenderer.h */,
 				05589B94252D741D00A0643D /* OpenGLRenderer.m */,
 				05589B95252D741D00A0643D /* GLHeaders.h */,
 				05589B97252D741D00A0643D /* vertex.vsh */,
 				05589B96252D741D00A0643D /* fragment.fsh */,
-				05589B98252D741D00A0643D /* OpenGLRenderer.h */,
 			);
 			path = OpenGL;
 			sourceTree = "<group>";
