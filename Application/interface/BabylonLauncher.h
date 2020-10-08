@@ -1,6 +1,7 @@
 #ifndef BABYLONLAUNCHER_H
 #define BABYLONLAUNCHER_H
 
+#include "framebuffer_canvas.h"
 #include <memory>
 
 namespace BABYLON {
@@ -24,7 +25,7 @@ public:
   
 private:
   // Babylon scene related variables
-  std::unique_ptr<BABYLON::ICanvas> _renderCanvas;
+  std::unique_ptr<BABYLON::impl::FrameBufferCanvas> _renderCanvas;
   std::shared_ptr<BABYLON::IRenderableScene> _renderableScene;
 }; // end of class SimpleLauncher
 

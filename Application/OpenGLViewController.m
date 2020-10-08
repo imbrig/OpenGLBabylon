@@ -56,8 +56,8 @@
   // Default FBO is 0 on macOS since it uses a traditional OpenGL pixel format model
 //  _defaultFrameBuffer = 0;
   
+  _babylonManager = [[BabylonManager alloc] initWithWidth:_view.frame.size.width*2 height:_view.frame.size.height*2];
   _openGLRenderer = [[OpenGLRenderer alloc] initWithDefaultFBOName:_defaultFrameBuffer];
-//  _babylonManager = [[BabylonManager alloc] initWithWidth:_view.frame.size.width*2 height:_view.frame.size.height*2];
   [_openGLRenderer useTextureFromFileAsBaseMap];
   [_openGLRenderer resize:self.drawableSize];
 #else
@@ -164,7 +164,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 - (void)draw:(id)sender
 {
   [EAGLContext setCurrentContext:_context];
-//  [_babylonManager draw];
+  [_babylonManager draw];
   
   [_openGLRenderer draw];
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
@@ -189,8 +189,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
   // Get the layer
   _eaglLayer = (CAEAGLLayer *)self.view.layer;
-  _eaglLayer.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking : @NO,
-                                   kEAGLDrawablePropertyColorFormat     : kEAGLColorFormatRGBA8 };
+  _eaglLayer.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking : @NO, kEAGLDrawablePropertyColorFormat : kEAGLColorFormatRGBA8 };
   _eaglLayer.opaque = YES;
 }
 
@@ -204,8 +203,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 
 - (void)setupRenderBuffer
 {
-  // On iOS & tvOS you must create an FBO and attach a CoreAnimation allocated drawable texture
-  // to use as the "defaultFBO" for a view
+  // On iOS & tvOS you must create an FBO and attach a CoreAnimation allocated drawable texture to use as the "defaultFBO" for a view
   glGenFramebuffers(1, &_defaultFrameBuffer);
   glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);
   glGenRenderbuffers(1, &_colorRenderBuffer);
@@ -245,7 +243,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   
   // Update size to Babylon
   CGSize resolution = _view.frame.size;//[self drawableSize];
-//  [_babylonManager setSizeWithWidth:resolution.width*2 height:resolution.height*2];
+  [_babylonManager setSizeWithWidth:resolution.width*2 height:resolution.height*2];
 }
 
 //- (GLuint)compileShader:(NSString*)shaderString withType:(GLenum)shaderType

@@ -21,6 +21,8 @@
 		056CA4062512D3830078139A /* canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3FA2512D3830078139A /* canvas.cpp */; };
 		056CA4342513105E0078139A /* BabylonManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonManager.mm */; };
 		056CA4352513105E0078139A /* BabylonManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonManager.mm */; };
+		0570080B252E760F000DE5A8 /* framebuffer_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */; };
+		0570080C252E760F000DE5A8 /* framebuffer_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */; };
 		0595ACF2251186E500D05F0B /* gradient_material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595A57E251186DD00D05F0B /* gradient_material.cpp */; };
 		0595ACF3251186E500D05F0B /* gradient_material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595A57E251186DD00D05F0B /* gradient_material.cpp */; };
 		0595ACF4251186E500D05F0B /* gradient_material_defines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595A57F251186DD00D05F0B /* gradient_material_defines.cpp */; };
@@ -1438,6 +1440,8 @@
 		056CA3FE2512D3830078139A /* gl_rendering_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl_rendering_context.h; sourceTree = "<group>"; };
 		056CA4322513105E0078139A /* BabylonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonManager.h; sourceTree = "<group>"; };
 		056CA4332513105E0078139A /* BabylonManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BabylonManager.mm; sourceTree = "<group>"; };
+		05700809252E760F000DE5A8 /* framebuffer_canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framebuffer_canvas.h; sourceTree = "<group>"; };
+		0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framebuffer_canvas.cpp; sourceTree = "<group>"; };
 		0595A532251186DC00D05F0B /* gradient_vertex_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradient_vertex_fx.h; sourceTree = "<group>"; };
 		0595A533251186DC00D05F0B /* gradient_material_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradient_material_defines.h; sourceTree = "<group>"; };
 		0595A534251186DC00D05F0B /* gradient_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradient_fragment_fx.h; sourceTree = "<group>"; };
@@ -3297,6 +3301,8 @@
 		056CA3F62512D3830078139A /* interface */ = {
 			isa = PBXGroup;
 			children = (
+				0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */,
+				05700809252E760F000DE5A8 /* framebuffer_canvas.h */,
 				0597BDEB252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp */,
 				0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */,
 				056CA3E22512B0A10078139A /* HelloScene.cpp */,
@@ -7332,6 +7338,7 @@
 				0595ADF6251186E500D05F0B /* multi_material.cpp in Sources */,
 				0595AD46251186E500D05F0B /* scene_optimizer_options.cpp in Sources */,
 				0595AE96251186E600D05F0B /* sheen_block.cpp in Sources */,
+				0570080B252E760F000DE5A8 /* framebuffer_canvas.cpp in Sources */,
 				0595AF38251186E600D05F0B /* color_correction_post_process.cpp in Sources */,
 				0595AE56251186E500D05F0B /* fog_block.cpp in Sources */,
 				0595B00C251186E600D05F0B /* fly_camera_mouse_input.cpp in Sources */,
@@ -8205,6 +8212,7 @@
 				056CA3E82512B0A10078139A /* HelloScene.cpp in Sources */,
 				0595B013251186E600D05F0B /* free_camera_mouse_input.cpp in Sources */,
 				0595AE6D251186E500D05F0B /* lerp_block.cpp in Sources */,
+				0570080C252E760F000DE5A8 /* framebuffer_canvas.cpp in Sources */,
 				0595AFDD251186E600D05F0B /* arc_rotate_camera_inputs_manager.cpp in Sources */,
 				0595AF4D251186E600D05F0B /* lens_rendering_pipeline.cpp in Sources */,
 				0595ADBF251186E500D05F0B /* env_texture_loader.cpp in Sources */,
