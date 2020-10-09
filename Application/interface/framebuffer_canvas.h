@@ -23,7 +23,10 @@ public:
 
   void bind();
   void unbind();
-
+  
+  void renderBufferBind();
+  void renderBufferUnbind();
+  
   unsigned int frameBufferId();
   unsigned int colorBufferId();
   unsigned int renderBufferId();

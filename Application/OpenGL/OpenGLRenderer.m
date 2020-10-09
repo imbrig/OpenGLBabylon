@@ -1,5 +1,4 @@
 #import "OpenGLRenderer.h"
-#import <GLKit/GLKTextureLoader.h>
 
 @implementation OpenGLRenderer
 {
@@ -25,24 +24,9 @@ enum {
     NSLog(@"%s %s", glGetString(GL_RENDERER), glGetString(GL_VERSION));
     // Build all of our objects and setup initial state here
     _vaoName = [self buildVAO];
+    _programName = [self buildProgramShaders];
   }
   return self;
-}
-
-- (void)useTextureFromFileAsBaseMap
-{
-  NSError *error;
-  {
-    NSURL *baseTextureURL = [[NSBundle mainBundle] URLForResource:@"Assets/Colors" withExtension:@"png"];
-    NSDictionary *option = nil;// @{ GLKTextureLoaderOriginBottomLeft : @YES};
-    GLKTextureInfo *texInfo = [GLKTextureLoader textureWithContentsOfURL:baseTextureURL options:option error:&error];
-    NSAssert(texInfo, @"Failed to load texture at %@: %@", baseTextureURL.absoluteString, error);
-    _baseMapTexName = texInfo.name;
-    _baseMapTexTarget = texInfo.target;
-  }
-  NSURL *vertexSourceURL = [[NSBundle mainBundle] URLForResource:@"vertex" withExtension:@"vsh"];
-  NSURL *fragmentSourceURL = [[NSBundle mainBundle] URLForResource:@"fragment" withExtension:@"fsh"];
-  _programName = [self buildProgramWithVertexSourceURL:vertexSourceURL withFragmentSourceURL:fragmentSourceURL];
 }
 
 - (GLuint)buildVAO
@@ -54,7 +38,7 @@ enum {
   } Vertex;
 
   static const Vertex QuadVertices[] = {
-    //  Positions                        TexCoords
+    //  Positions                    TexCoords
     { { -0.9,  -0.9,  0.0,  1.0 }, { 0.0, 1.0 } },
     { { -0.9,   0.9,  0.0,  1.0 }, { 0.0, 0.0 } },
     { {  0.9,  -0.9,  0.0,  1.0 }, { 1.0, 1.0 } },
@@ -102,14 +86,44 @@ enum {
   GetGLError();
 }
 
-- (GLuint)buildProgramWithVertexSourceURL:(NSURL*)vertexSourceURL withFragmentSourceURL:(NSURL*)fragmentSourceURL
+- (GLuint)buildProgramShaders
 {
-  NSError *error;
-  NSString *vertSourceString = [[NSString alloc] initWithContentsOfURL:vertexSourceURL encoding:NSUTF8StringEncoding error:&error];
-  NSAssert(vertSourceString, @"Could not load vertex shader source: %@", error);
-
-  NSString *fragSourceString = [[NSString alloc] initWithContentsOfURL:fragmentSourceURL encoding:NSUTF8StringEncoding error:&error];
-  NSAssert(fragSourceString, @"Could not load fragment shader source: %@", error);
+  NSString *vertexString = @"#ifdef GL_ES\n"
+                            "precision highp float;\n"
+                            "#endif\n"
+                            "#if __VERSION__ >= 140\n"
+                            "in vec4  inPosition;\n"
+                            "in vec2  inTexcoord;\n"
+                            "out vec2 varTexcoord;\n"
+                            "#else\n"
+                            "attribute vec4 inPosition;\n"
+                            "attribute vec2 inTexcoord;\n"
+                            "varying vec2 varTexcoord;\n"
+                            "#endif\n"
+                            "void main (void)\n"
+                            "{\n"
+                            "    gl_Position = inPosition;\n"
+                            "    varTexcoord = inTexcoord;\n"
+                            "}";
+  
+  NSString *fragmentString = @"#ifdef GL_ES\n"
+                              "precision highp float;\n"
+                              "#endif\n"
+                              "#if __VERSION__ >= 140\n"
+                              "in vec2 varTexcoord;\n"
+                              "out vec4 fragColor;\n"
+                              "#else\n"
+                              "varying vec2 varTexcoord;\n"
+                              "#endif\n"
+                              "uniform sampler2D textureMap;\n"
+                              "void main (void)\n"
+                              "{\n"
+                              "    #if __VERSION__ >= 140\n"
+                              "    fragColor = texture(textureMap, varTexcoord.st, 0.0);\n"
+                              "    #else\n"
+                              "    gl_FragColor = texture2D(textureMap, varTexcoord.st, 0.0);\n"
+                              "    #endif\n"
+                              "}";
   
   GLuint prgName;
   GLint logLength, status;
@@ -119,7 +133,7 @@ enum {
 
   // Determine if GLSL version 140 is supported by this context.
   // We'll use this info to generate a GLSL shader source string with the proper version preprocessor string prepended
-  float  glLanguageVersion;
+  float glLanguageVersion;
 
 #if TARGET_IOS
   sscanf((char *)glGetString(GL_SHADING_LANGUAGE_VERSION), "OpenGL ES GLSL ES %f", &glLanguageVersion);
@@ -148,11 +162,11 @@ enum {
   //////////////////////////////////////
 
   // Allocate memory for the source string including the version preprocessor information
-  sourceString = malloc(vertSourceString.length + versionStringSize);
+  sourceString = malloc(vertexString.length + versionStringSize);
 
   // Prepend our vertex shader source string with the supported GLSL version so
   //  the shader will work on ES, Legacy, and OpenGL 3.2 Core Profile contexts
-  sprintf(sourceString, "#version %d\n%s", version, vertSourceString.UTF8String);
+  sprintf(sourceString, "#version %d\n%s", version, vertexString.UTF8String);
 
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(vertexShader, 1, (const GLchar **)&(sourceString), NULL);
@@ -188,11 +202,11 @@ enum {
   /////////////////////////////////////////
 
   // Allocate memory for the source string including the version preprocessor information
-  sourceString = malloc(fragSourceString.length + versionStringSize);
+  sourceString = malloc(fragmentString.length + versionStringSize);
 
   // Prepend our fragment shader source string with the supported GLSL version so
   //  the shader will work on ES, Legacy, and OpenGL 3.2 Core Profile contexts
-  sprintf(sourceString, "#version %d\n%s", version, fragSourceString.UTF8String);
+  sprintf(sourceString, "#version %d\n%s", version, fragmentString.UTF8String);
 
   GLuint fragShader = glCreateShader(GL_FRAGMENT_SHADER);
   glShaderSource(fragShader, 1, (const GLchar **)&(sourceString), NULL);
@@ -255,7 +269,7 @@ enum {
 
   glUseProgram(prgName);
   // Setup common program input points
-  GLint samplerLoc = glGetUniformLocation(prgName, "baseMap");
+  GLint samplerLoc = glGetUniformLocation(prgName, "textureMap");
   NSAssert(samplerLoc >= 0, @"Could not get sampler Uniform Index");
   // Indicate that the diffuse texture will be bound to texture unit 0
   GLint unit = 0;
@@ -265,15 +279,15 @@ enum {
   return prgName;
 }
 
-- (void)draw:(GLuint)defaultFrameBuffer
+- (void)draw:(GLuint)defaultFrameBuffer texTarget:(GLenum)texTarget texName:(GLuint)texName;
 {
-  glBindFramebuffer(GL_FRAMEBUFFER, defaultFrameBuffer);
-  glClearColor(0.25, 0, 0.5, 1);
+//  glBindFramebuffer(GL_FRAMEBUFFER, defaultFrameBuffer);
+//  glClearColor(0.25, 0, 0.5, 1);
 
   glClear(GL_COLOR_BUFFER_BIT);
   glUseProgram(_programName);
   glActiveTexture(GL_TEXTURE0);
-  glBindTexture(_baseMapTexTarget, _baseMapTexName);
+  glBindTexture(GL_TEXTURE_2D, texName);
   glBindVertexArray(_vaoName);
   glDrawArrays(GL_TRIANGLES, 0, 6);
   GetGLError();

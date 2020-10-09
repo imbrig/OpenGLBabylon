@@ -9,7 +9,7 @@
 
 #include <babylon/cameras/arc_rotate_camera.h>
 #include <babylon/materials/standard_material.h>
-#include <babylon/materials/textures/mirror_texture.h>
+//#include <babylon/materials/textures/mirror_texture.h>
 
 #include <iostream>
 #include <stdexcept>
@@ -45,17 +45,17 @@ public:
     auto knot = Mesh::CreateTorusKnot("knot", 1, 0.4f, 128, 64, 2, 3, scene);
 
     // Mirror
-    auto mirror = Mesh::CreateBox("Mirror", 1.0, scene);
-    mirror->scaling = Vector3(100.f, 0.01f, 100.f);
-    auto mirrorMaterial = StandardMaterial::New("mirror", scene);
-    auto reflectionTexture = MirrorTexture::New("mirror", 1024.f, scene, true);
-    reflectionTexture->mirrorPlane = Plane(0.f, -1.f, 0.f, -2.f);
-    reflectionTexture->renderList = {knot.get()};
-    reflectionTexture->level = 1.f;
-    reflectionTexture->samples = 16;
-    mirrorMaterial->reflectionTexture = reflectionTexture;
-    mirror->material = mirrorMaterial;
-    mirror->position = Vector3(0.f, -2.f, 0.f);
+//    auto mirror = Mesh::CreateBox("Mirror", 1.0, scene);
+//    mirror->scaling = Vector3(100.f, 0.01f, 100.f);
+//    auto mirrorMaterial = StandardMaterial::New("mirror", scene);
+//    auto reflectionTexture = MirrorTexture::New("mirror", 1024.f, scene, true);
+//    reflectionTexture->mirrorPlane = Plane(0.f, -1.f, 0.f, -2.f);
+//    reflectionTexture->renderList = {knot.get()};
+//    reflectionTexture->level = 1.f;
+//    reflectionTexture->samples = 16;
+//    mirrorMaterial->reflectionTexture = reflectionTexture;
+//    mirror->material = mirrorMaterial;
+//    mirror->position = Vector3(0.f, -2.f, 0.f);
 
     // Main material
     auto mainMaterial = StandardMaterial::New("main", scene);

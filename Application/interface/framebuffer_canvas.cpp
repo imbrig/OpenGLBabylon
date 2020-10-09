@@ -73,8 +73,8 @@ void FrameBufferCanvas::initializeFrameBuffer()
 //  _renderingContext->bindTexture(GL_TEXTURE_2D, nullptr);
 //  _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
   
-  _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, mRenderbuffer.get());
-  _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
+//  _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, mRenderbuffer.get());
+//  _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
 }
 
 void FrameBufferCanvas::resize(int iWidth, int iHeight)
@@ -92,12 +92,14 @@ void FrameBufferCanvas::resize(int iWidth, int iHeight)
 //    _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
 
     // Bind the frame buffer
-    _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, mFrameBuffer.get());
+//    _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, mFrameBuffer.get());
 
+/*
     // Resize renderbuffer
     _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, mRenderbuffer.get());
     _renderingContext->renderbufferStorage(GL_RENDERBUFFER, GL::DEPTH24_STENCIL8, clientWidth, clientHeight);
-
+*/
+    
     // Set "renderedTexture" as our colour attachement #0
 //    _renderingContext->framebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mTextureColorBuffer.get(), 0);
 
@@ -140,6 +142,16 @@ void FrameBufferCanvas::bind()
 void FrameBufferCanvas::unbind()
 {
   _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
+}
+
+void FrameBufferCanvas::renderBufferBind()
+{
+  _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, mRenderbuffer.get());
+}
+
+void FrameBufferCanvas::renderBufferUnbind()
+{
+  _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, nullptr);
 }
 
 unsigned int FrameBufferCanvas::frameBufferId()

@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05589B9B252D741D00A0643D /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05589B94252D741D00A0643D /* OpenGLRenderer.m */; };
-		05589B9C252D741D00A0643D /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05589B94252D741D00A0643D /* OpenGLRenderer.m */; };
-		05589B9D252D741D00A0643D /* fragment.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 05589B96252D741D00A0643D /* fragment.fsh */; };
-		05589B9E252D741D00A0643D /* fragment.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 05589B96252D741D00A0643D /* fragment.fsh */; };
-		05589B9F252D741D00A0643D /* vertex.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 05589B97252D741D00A0643D /* vertex.vsh */; };
-		05589BA0252D741D00A0643D /* vertex.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 05589B97252D741D00A0643D /* vertex.vsh */; };
 		056CA3E72512B0A10078139A /* HelloScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3E22512B0A10078139A /* HelloScene.cpp */; };
 		056CA3E82512B0A10078139A /* HelloScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3E22512B0A10078139A /* HelloScene.cpp */; };
 		056CA4032512D3830078139A /* gl_rendering_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3F92512D3830078139A /* gl_rendering_context.cpp */; };
@@ -1413,6 +1407,8 @@
 		0597BDF0252BB19F0079539C /* StarfieldProceduralTextureScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */; };
 		0598FBD625145C4F0035F7FC /* BabylonLauncher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */; };
 		0598FBD725145C4F0035F7FC /* BabylonLauncher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */; };
+		05DDD86F252FF13400213A15 /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD86E252FF13400213A15 /* OpenGLRenderer.m */; };
+		05DDD870252FF13400213A15 /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD86E252FF13400213A15 /* OpenGLRenderer.m */; };
 		3A206C43208EE6A70092C542 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A206C41208EE6A70092C542 /* Main.storyboard */; };
 		3A206C58208EE6A70092C542 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A206C56208EE6A70092C542 /* LaunchScreen.storyboard */; };
 		3A9B6E3C209003ED00528FEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A9B6E3A209003EC00528FEF /* Main.storyboard */; };
@@ -1427,11 +1423,6 @@
 
 /* Begin PBXFileReference section */
 		05363A6E2527EB2900C4EBCA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
-		05589B94252D741D00A0643D /* OpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLRenderer.m; sourceTree = "<group>"; };
-		05589B95252D741D00A0643D /* GLHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHeaders.h; sourceTree = "<group>"; };
-		05589B96252D741D00A0643D /* fragment.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = fragment.fsh; sourceTree = "<group>"; };
-		05589B97252D741D00A0643D /* vertex.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = vertex.vsh; sourceTree = "<group>"; };
-		05589B98252D741D00A0643D /* OpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLRenderer.h; sourceTree = "<group>"; };
 		056CA3E22512B0A10078139A /* HelloScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloScene.cpp; sourceTree = "<group>"; };
 		056CA3E42512B0A10078139A /* MakeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeScene.h; sourceTree = "<group>"; };
 		056CA3F92512D3830078139A /* gl_rendering_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gl_rendering_context.cpp; sourceTree = "<group>"; };
@@ -3236,6 +3227,9 @@
 		0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarfieldProceduralTextureScene.cpp; sourceTree = "<group>"; };
 		0598FBD425145C4F0035F7FC /* BabylonLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonLauncher.h; sourceTree = "<group>"; };
 		0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BabylonLauncher.cpp; sourceTree = "<group>"; };
+		05DDD86C252FF13400213A15 /* OpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLRenderer.h; sourceTree = "<group>"; };
+		05DDD86D252FF13400213A15 /* GLHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHeaders.h; sourceTree = "<group>"; };
+		05DDD86E252FF13400213A15 /* OpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLRenderer.m; sourceTree = "<group>"; };
 		3A206C3B208EE6A70092C542 /* OpenGLBabylon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLBabylon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A206C42208EE6A70092C542 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A206C44208EE6A70092C542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -3276,26 +3270,6 @@
 				05363A6E2527EB2900C4EBCA /* OpenGLES.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		05589B90252D741D00A0643D /* renderer */ = {
-			isa = PBXGroup;
-			children = (
-				05589B93252D741D00A0643D /* OpenGL */,
-			);
-			path = renderer;
-			sourceTree = "<group>";
-		};
-		05589B93252D741D00A0643D /* OpenGL */ = {
-			isa = PBXGroup;
-			children = (
-				05589B98252D741D00A0643D /* OpenGLRenderer.h */,
-				05589B94252D741D00A0643D /* OpenGLRenderer.m */,
-				05589B95252D741D00A0643D /* GLHeaders.h */,
-				05589B97252D741D00A0643D /* vertex.vsh */,
-				05589B96252D741D00A0643D /* fragment.fsh */,
-			);
-			path = OpenGL;
 			sourceTree = "<group>";
 		};
 		056CA3F62512D3830078139A /* interface */ = {
@@ -7147,6 +7121,16 @@
 			path = perlinnoise;
 			sourceTree = "<group>";
 		};
+		05DDD86B252FF13400213A15 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				05DDD86C252FF13400213A15 /* OpenGLRenderer.h */,
+				05DDD86D252FF13400213A15 /* GLHeaders.h */,
+				05DDD86E252FF13400213A15 /* OpenGLRenderer.m */,
+			);
+			path = OpenGL;
+			sourceTree = "<group>";
+		};
 		3A206C29208EE6A70092C542 = {
 			isa = PBXGroup;
 			children = (
@@ -7192,7 +7176,7 @@
 		3AF26D20208FBB9E00203EB3 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				05589B90252D741D00A0643D /* renderer */,
+				05DDD86B252FF13400213A15 /* OpenGL */,
 				056CA3F62512D3830078139A /* interface */,
 				3A206C3D208EE6A70092C542 /* macOS */,
 				3A206C4C208EE6A70092C542 /* iOS */,
@@ -7293,8 +7277,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05589B9F252D741D00A0643D /* vertex.vsh in Resources */,
-				05589B9D252D741D00A0643D /* fragment.fsh in Resources */,
 				3ABE33A220AE8A8D002FD18C /* Assets in Resources */,
 				0595B08E251186E600D05F0B /* quadratic_error_simplification.cpp.bak in Resources */,
 				3A206C43208EE6A70092C542 /* Main.storyboard in Resources */,
@@ -7307,9 +7289,7 @@
 			files = (
 				3ABE33A320AE8A8D002FD18C /* Assets in Resources */,
 				3A206C58208EE6A70092C542 /* LaunchScreen.storyboard in Resources */,
-				05589B9E252D741D00A0643D /* fragment.fsh in Resources */,
 				0595B08F251186E600D05F0B /* quadratic_error_simplification.cpp.bak in Resources */,
-				05589BA0252D741D00A0643D /* vertex.vsh in Resources */,
 				3A9B6E3C209003ED00528FEF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7487,7 +7467,6 @@
 				0595B224251186E700D05F0B /* animation.cpp in Sources */,
 				056CA3E72512B0A10078139A /* HelloScene.cpp in Sources */,
 				0595B0CC251186E700D05F0B /* raw_texture_extension.cpp in Sources */,
-				05589B9B252D741D00A0643D /* OpenGLRenderer.m in Sources */,
 				0595AFC4251186E600D05F0B /* point_particle_emitter.cpp in Sources */,
 				0595B166251186E700D05F0B /* utility_layer_renderer.cpp in Sources */,
 				0595ADD2251186E500D05F0B /* noise_procedural_texture.cpp in Sources */,
@@ -7933,6 +7912,7 @@
 				0595B196251186E700D05F0B /* physics_impostor_parameters.cpp in Sources */,
 				0595B054251186E600D05F0B /* torus_builder.cpp in Sources */,
 				0595B0EC251186E700D05F0B /* shader_code_test_node.cpp in Sources */,
+				05DDD86F252FF13400213A15 /* OpenGLRenderer.m in Sources */,
 				0595B242251186E700D05F0B /* axes_viewer.cpp in Sources */,
 				0595ADF2251186E500D05F0B /* effect_includes_shaders_store.cpp in Sources */,
 				0595AF12251186E600D05F0B /* axis_drag_gizmo.cpp in Sources */,
@@ -8225,7 +8205,6 @@
 				0595B213251186E700D05F0B /* easing_function.cpp in Sources */,
 				0595AE41251186E500D05F0B /* screen_size_block.cpp in Sources */,
 				0595B237251186E700D05F0B /* click_info.cpp in Sources */,
-				05589B9C252D741D00A0643D /* OpenGLRenderer.m in Sources */,
 				0595AD8F251186E500D05F0B /* octree_block.cpp in Sources */,
 				0595B167251186E700D05F0B /* utility_layer_renderer.cpp in Sources */,
 				0595ADE7251186E500D05F0B /* shader_material.cpp in Sources */,
@@ -8314,6 +8293,7 @@
 				0595AFD7251186E600D05F0B /* intersection_info.cpp in Sources */,
 				0595AD3F251186E500D05F0B /* render_targets_optimization.cpp in Sources */,
 				0595AFA1251186E600D05F0B /* points_cloud_system.cpp in Sources */,
+				05DDD870252FF13400213A15 /* OpenGLRenderer.m in Sources */,
 				0595ADFF251186E500D05F0B /* image_processing_configuration.cpp in Sources */,
 				0595B201251186E700D05F0B /* exponential_ease.cpp in Sources */,
 				0595AF37251186E600D05F0B /* screen_space_curvature_post_process.cpp in Sources */,

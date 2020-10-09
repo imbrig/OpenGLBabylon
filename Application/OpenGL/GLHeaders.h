@@ -4,8 +4,8 @@ See LICENSE folder for this sample’s licensing information.
 Abstract:
 Header for collection of OpenGL header and definitinms
 */
-#ifndef AAPLGLHeaders_h
-#define AAPLGLHeaders_h
+#ifndef OPENGL_GLHeaders_h
+#define OPENGL_GLHeaders_h
 
 
 #if TARGET_MACOS
@@ -93,4 +93,4 @@ static inline const char * GetGLErrorString(GLenum error)
     }                                                 \
 }
 
-#endif /* AAPLGLHeaders_h */
+#endif /* OPENGL_GLHeaders_h */
