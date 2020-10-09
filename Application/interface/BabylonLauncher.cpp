@@ -54,9 +54,9 @@ BabylonLauncher::~BabylonLauncher()
 void BabylonLauncher::run()
 {
   // Render Scene
-//  _renderCanvas->bind();
+  _renderCanvas->bind();
   _renderableScene->render();
-//  _renderCanvas->unbind();
+  _renderCanvas->unbind();
   
 //  _renderCanvas->renderBufferBind();
 }
@@ -84,6 +84,38 @@ unsigned int BabylonLauncher::renderBufferId()
   return _renderCanvas->renderBufferId();
 }
 
+unsigned int BabylonLauncher::textureBufferId()
+{
+  return _renderCanvas->textureBufferId();
+}
+
+
+void BabylonLauncher::drawQuad(GLuint defaultFrameBuffer, GLuint texName)
+{
+//  _renderCanvas->bind();
+  glBindFramebuffer(GL_FRAMEBUFFER, defaultFrameBuffer);
+//  glClearColor(0, 0, 0.5, 1);
+  
+//  GLuint name = _renderCanvas->textureBufferId();
+  glClear(GL_COLOR_BUFFER_BIT);
+  glUseProgram(_programName);
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, texName);
+  glBindVertexArray(_vaoName);
+  glDrawArrays(GL_TRIANGLES, 0, 6);
+  GetCppGLError(__FILE__, __LINE__);
+  
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//  _renderCanvas->unbind();
+//  _renderCanvas->renderBufferBind();
+}
+
+void BabylonLauncher::resizeQuad(int width, int height)
+{
+  glViewport(0, 0, width, height);
+  float aspect = (float)width / (float)height;
+}
+
 GLuint BabylonLauncher::buildQuadVAO()
 {
   typedef struct
@@ -94,12 +126,12 @@ GLuint BabylonLauncher::buildQuadVAO()
 
   static const Vertex QuadVertices[] = {
     //  Positions                    TexCoords
-    { { -0.9,  -0.9,  0.0,  1.0 }, { 0.0, 1.0 } },
-    { { -0.9,   0.9,  0.0,  1.0 }, { 0.0, 0.0 } },
-    { {  0.9,  -0.9,  0.0,  1.0 }, { 1.0, 1.0 } },
-    { {  0.9,  -0.9,  0.0,  1.0 }, { 1.0, 1.0 } },
-    { { -0.9,   0.9,  0.0,  1.0 }, { 0.0, 0.0 } },
-    { {  0.9,   0.9,  0.0,  1.0 }, { 1.0, 0.0 } },
+    { { -0.0,  -0.0,  0.0,  1.0 }, { 0.0, 1.0 } },
+    { { -0.0,   1.0,  0.0,  1.0 }, { 0.0, 0.0 } },
+    { {  1.0,  -0.0,  0.0,  1.0 }, { 1.0, 1.0 } },
+    { {  1.0,  -0.0,  0.0,  1.0 }, { 1.0, 1.0 } },
+    { { -0.0,   1.0,  0.0,  1.0 }, { 0.0, 0.0 } },
+    { {  1.0,   1.0,  0.0,  1.0 }, { 1.0, 0.0 } },
   };
 
   GLuint vaoName;
@@ -139,23 +171,6 @@ void BabylonLauncher::destroyQuadVAO()
   }
   glDeleteVertexArrays(1, &_vaoName);
   GetCppGLError(__FILE__, __LINE__);
-}
-
-void BabylonLauncher::drawQuad(GLuint defaultFrameBuffer, GLenum texTarget, GLuint texName)
-{
-  glClear(GL_COLOR_BUFFER_BIT);
-  glUseProgram(_programName);
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, texName);
-  glBindVertexArray(_vaoName);
-  glDrawArrays(GL_TRIANGLES, 0, 6);
-  GetCppGLError(__FILE__, __LINE__);
-}
-
-void BabylonLauncher::resizeQuad(int width, int height)
-{
-  glViewport(0, 0, width, height);
-  float aspect = (float)width / (float)height;
 }
 
 GLuint BabylonLauncher::buildQuadProgramShaders()

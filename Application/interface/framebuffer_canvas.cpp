@@ -14,7 +14,7 @@
 namespace BABYLON {
 namespace impl {
 
-FrameBufferCanvas::FrameBufferCanvas() :
+FrameBufferCanvas::FrameBufferCanvas():
   mFrameBuffer{nullptr},
   mTextureColorBuffer{nullptr},
   mRenderbuffer{nullptr}
@@ -44,42 +44,39 @@ void FrameBufferCanvas::initializeFrameBuffer()
   // Create a frame buffer
   mFrameBuffer = _renderingContext->createFramebuffer();
   _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, mFrameBuffer.get());
-//
-//  // Create a color attachment texture
-//  mTextureColorBuffer = _renderingContext->createTexture();
-//  _renderingContextbindTexture(GL_TEXTURE_2D, mTextureColorBuffer.get());
-//  _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
-//  _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//  _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//
+
+  // Create a color attachment texture
+  mTextureColorBuffer = _renderingContext->createTexture();
+  _renderingContext->bindTexture(GL_TEXTURE_2D, mTextureColorBuffer.get());
+  _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB,
+                                GL_UNSIGNED_BYTE, nullptr);
+  _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
   // Create a renderbuffer object for depth and stencil attachment
   mRenderbuffer = _renderingContext->createRenderbuffer();
   _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, mRenderbuffer.get());
-//  _renderingContext->renderbufferStorage(GL_RENDERBUFFER, GL::DEPTH24_STENCIL8, clientWidth, clientHeight);
-//  _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL::DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mRenderbuffer.get());
-//
-//  // Set "renderedTexture" as our colour attachement #0
-//  _renderingContext->framebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mTextureColorBuffer.get(), 0);
-//
-//  // Set the list of draw buffers.
-//  std::vector<GL::GLenum> drawBuffers{GL_COLOR_ATTACHMENT0};
-//  _renderingContext->drawBuffers(drawBuffers); // "1" is the size of DrawBuffers
-//
-//  if (_renderingContext->checkFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-//  {
-//    throw std::runtime_error("ERROR::FRAMEBUFFER:: Framebuffer is not complete!");
-//  }
-//
-//  _renderingContext->bindTexture(GL_TEXTURE_2D, nullptr);
-//  _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
-  
-//  _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, mRenderbuffer.get());
-//  _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
+  _renderingContext->renderbufferStorage(GL_RENDERBUFFER, GL::DEPTH24_STENCIL8, clientWidth, clientHeight);
+  _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL::DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mRenderbuffer.get());
+
+  // Set "renderedTexture" as our colour attachement #0
+  _renderingContext->framebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mTextureColorBuffer.get(), 0);
+
+  // Set the list of draw buffers.
+  std::vector<GLenum> drawBuffers{GL_COLOR_ATTACHMENT0};
+  _renderingContext->drawBuffers(drawBuffers); // "1" is the size of DrawBuffers
+
+  if (_renderingContext->checkFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+    throw std::runtime_error("ERROR::FRAMEBUFFER:: Framebuffer is not complete!");
+  }
+
+  _renderingContext->bindTexture(GL_TEXTURE_2D, nullptr);
+  _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
 }
 
 void FrameBufferCanvas::resize(int iWidth, int iHeight)
 {
-  if(clientWidth != iWidth || clientHeight != iHeight)
+  if (clientWidth != iWidth || clientHeight != iHeight)
   {
     clientWidth                            = iWidth;
     clientHeight                           = iHeight;
@@ -87,32 +84,31 @@ void FrameBufferCanvas::resize(int iWidth, int iHeight)
     _renderingContext->drawingBufferHeight = iHeight;
 
     // Resize texture
-//    _renderingContext->activeTexture(GL_TEXTURE0);
-//    _renderingContext->bindTexture(GL_TEXTURE_2D, mTextureColorBuffer.get());
-//    _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+    _renderingContext->activeTexture(GL_TEXTURE0);
+    _renderingContext->bindTexture(GL_TEXTURE_2D, mTextureColorBuffer.get());
+    _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
 
     // Bind the frame buffer
-//    _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, mFrameBuffer.get());
+    _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, mFrameBuffer.get());
 
-/*
     // Resize renderbuffer
     _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, mRenderbuffer.get());
     _renderingContext->renderbufferStorage(GL_RENDERBUFFER, GL::DEPTH24_STENCIL8, clientWidth, clientHeight);
-*/
-    
+
     // Set "renderedTexture" as our colour attachement #0
-//    _renderingContext->framebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mTextureColorBuffer.get(), 0);
+    _renderingContext->framebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mTextureColorBuffer.get(), 0);
 
     // Unbind the buffers and texture
-//    _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
-//    _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, nullptr);
-//    _renderingContext->bindTexture(GL_TEXTURE_2D, nullptr);
+    _renderingContext->bindFramebuffer(GL_FRAMEBUFFER, nullptr);
+    _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, nullptr);
+    _renderingContext->bindTexture(GL_TEXTURE_2D, nullptr);
   }
 }
 
 bool FrameBufferCanvas::initializeContext3d()
 {
-  if (!_initialized) {
+  if (!_initialized)
+  {
     _initialized = _renderingContext->initialize();
   }
 
@@ -159,7 +155,7 @@ unsigned int FrameBufferCanvas::frameBufferId()
   return mFrameBuffer->value;
 }
 
-unsigned int FrameBufferCanvas::colorBufferId()
+unsigned int FrameBufferCanvas::textureBufferId()
 {
   return mTextureColorBuffer->value;
 }

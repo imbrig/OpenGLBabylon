@@ -35,8 +35,9 @@ public:
   
   unsigned int frameBufferId();
   unsigned int renderBufferId();
+  unsigned int textureBufferId();
   
-  void drawQuad(GLuint defaultFrameBuffer, GLenum texTarget, GLuint texName);
+  void drawQuad(GLuint defaultFrameBuffer, GLuint texName);
   
 private:
   // Babylon scene related variables

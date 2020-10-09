@@ -162,8 +162,8 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   
   glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);
   [_babylonManager draw];
-  [_babylonManager drawQuad:_defaultFrameBuffer texTarget:_texInfo.target texName:_texInfo.name];
-//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  [_babylonManager drawQuad:_defaultFrameBuffer texName:_texInfo.name];
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   
   [_context presentRenderbuffer:GL_RENDERBUFFER];

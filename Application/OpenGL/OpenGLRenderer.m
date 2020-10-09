@@ -281,8 +281,8 @@ enum {
 
 - (void)draw:(GLuint)defaultFrameBuffer texTarget:(GLenum)texTarget texName:(GLuint)texName;
 {
-//  glBindFramebuffer(GL_FRAMEBUFFER, defaultFrameBuffer);
-//  glClearColor(0.25, 0, 0.5, 1);
+  glBindFramebuffer(GL_FRAMEBUFFER, defaultFrameBuffer);
+  glClearColor(0.25, 0, 0.5, 1);
 
   glClear(GL_COLOR_BUFFER_BIT);
   glUseProgram(_programName);

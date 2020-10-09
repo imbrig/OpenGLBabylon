@@ -28,7 +28,7 @@ public:
   void renderBufferUnbind();
   
   unsigned int frameBufferId();
-  unsigned int colorBufferId();
+  unsigned int textureBufferId();
   unsigned int renderBufferId();
 
 private:

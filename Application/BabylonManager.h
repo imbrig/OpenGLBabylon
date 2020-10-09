@@ -17,7 +17,7 @@
 - (instancetype)initWithWidth:(int)width height:(int)height;
 - (void)setSizeWithWidth:(int)width height:(int)height;
 - (void)draw;
-- (void)drawQuad:(GLuint)defaultFrameBuffer texTarget:(GLenum)texTarget texName:(GLuint)texName;
+- (void)drawQuad:(GLuint)defaultFrameBuffer texName:(GLuint)texName;
 - (void)update;
 
 - (unsigned int)frameBufferId;

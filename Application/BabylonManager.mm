@@ -31,9 +31,9 @@
   _launcher->run();
 }
 
-- (void)drawQuad:(GLuint)defaultFrameBuffer texTarget:(GLenum)texTarget texName:(GLuint)texName
+- (void)drawQuad:(GLuint)defaultFrameBuffer texName:(GLuint)texName
 {
-  _launcher->drawQuad(defaultFrameBuffer, texTarget, texName);
+  _launcher->drawQuad(defaultFrameBuffer, texName);
 }
 
 - (void)update
