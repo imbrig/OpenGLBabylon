@@ -29,7 +29,6 @@ public:
 
   void initializeScene(ICanvas* canvas, Scene* scene) override
   {
-    using namespace BABYLON;
     scene->clearColor = Color4(0.5f, 0.f, 0.f, 1.f);
     
     auto camera = ArcRotateCamera::New("camera1", 0.f, 0.f, 10.f, Vector3::Zero(), scene);

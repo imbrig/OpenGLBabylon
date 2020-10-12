@@ -2,17 +2,14 @@
 #include "gl_rendering_context.h"
 
 #if TARGET_MACOS
-#include <OpenGL/gl.h>
 #include <OpenGL/gl3.h>
 #include <OpenGL/gl3ext.h>
 #else // if (TARGET_IOS || TARGET_TVOS)
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
 #include <OpenGLES/ES3/gl.h>
 #endif // !(TARGET_IOS || TARGET_TVOS)
 
-namespace BABYLON {
-namespace impl {
+namespace Interface {
+using namespace BABYLON;
 
 FrameBufferCanvas::FrameBufferCanvas():
   mFrameBuffer{nullptr},
@@ -48,8 +45,7 @@ void FrameBufferCanvas::initializeFrameBuffer()
   // Create a color attachment texture
   mTextureColorBuffer = _renderingContext->createTexture();
   _renderingContext->bindTexture(GL_TEXTURE_2D, mTextureColorBuffer.get());
-  _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB,
-                                GL_UNSIGNED_BYTE, nullptr);
+  _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
   _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -66,7 +62,8 @@ void FrameBufferCanvas::initializeFrameBuffer()
   std::vector<GLenum> drawBuffers{GL_COLOR_ATTACHMENT0};
   _renderingContext->drawBuffers(drawBuffers); // "1" is the size of DrawBuffers
 
-  if (_renderingContext->checkFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+  if(_renderingContext->checkFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+  {
     throw std::runtime_error("ERROR::FRAMEBUFFER:: Framebuffer is not complete!");
   }
 
@@ -165,5 +162,4 @@ unsigned int FrameBufferCanvas::renderBufferId()
   return mRenderbuffer->value;
 }
 
-} // end of namespace GL
-} // end of namespace BABYLON
+} // end of namespace Interface

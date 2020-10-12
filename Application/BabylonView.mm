@@ -1,17 +1,17 @@
-#import "BabylonManager.h"
-#import "interface/BabylonLauncher.h"
+#import "BabylonView.h"
+#import "interface/BabylonManager.h"
 
-@interface BabylonManager()
-@property (nonatomic, readonly) Launcher::BabylonLauncher* launcher;
+@interface BabylonView()
+@property (nonatomic, readonly) Interface::BabylonManager* launcher;
 @end
 
-@implementation BabylonManager
+@implementation BabylonView
 
 - (instancetype)initWithWidth:(int)width height:(int)height
 {
   if(self = [super init])
   {
-    _launcher = new Launcher::BabylonLauncher(width, height);
+    _launcher = new Interface::BabylonManager(width, height);
   }
   return self;
 }
@@ -26,15 +26,15 @@
   _launcher->setSize(width, height);
 }
 
-- (void)draw
+- (void)render
 {
-  _launcher->run();
+  _launcher->render();
 }
 
-- (void)drawQuad:(GLuint)defaultFrameBuffer texName:(GLuint)texName
-{
-  _launcher->drawQuad(defaultFrameBuffer, texName);
-}
+//- (void)drawQuad:(GLuint)defaultFrameBuffer texName:(GLuint)texName
+//{
+//  _launcher->drawQuad(defaultFrameBuffer, texName);
+//}
 
 - (void)update
 {

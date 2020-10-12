@@ -11,10 +11,10 @@
 		056CA3E82512B0A10078139A /* HelloScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3E22512B0A10078139A /* HelloScene.cpp */; };
 		056CA4032512D3830078139A /* gl_rendering_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3F92512D3830078139A /* gl_rendering_context.cpp */; };
 		056CA4042512D3830078139A /* gl_rendering_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3F92512D3830078139A /* gl_rendering_context.cpp */; };
-		056CA4052512D3830078139A /* canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3FA2512D3830078139A /* canvas.cpp */; };
-		056CA4062512D3830078139A /* canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3FA2512D3830078139A /* canvas.cpp */; };
-		056CA4342513105E0078139A /* BabylonManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonManager.mm */; };
-		056CA4352513105E0078139A /* BabylonManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonManager.mm */; };
+		056CA4052512D3830078139A /* basic_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3FA2512D3830078139A /* basic_canvas.cpp */; };
+		056CA4062512D3830078139A /* basic_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056CA3FA2512D3830078139A /* basic_canvas.cpp */; };
+		056CA4342513105E0078139A /* BabylonView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonView.mm */; };
+		056CA4352513105E0078139A /* BabylonView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonView.mm */; };
 		0570080B252E760F000DE5A8 /* framebuffer_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */; };
 		0570080C252E760F000DE5A8 /* framebuffer_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */; };
 		0595ACF2251186E500D05F0B /* gradient_material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595A57E251186DD00D05F0B /* gradient_material.cpp */; };
@@ -1405,8 +1405,8 @@
 		0597BDEE252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDEB252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp */; };
 		0597BDEF252BB19F0079539C /* StarfieldProceduralTextureScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */; };
 		0597BDF0252BB19F0079539C /* StarfieldProceduralTextureScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */; };
-		0598FBD625145C4F0035F7FC /* BabylonLauncher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */; };
-		0598FBD725145C4F0035F7FC /* BabylonLauncher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */; };
+		0598FBD625145C4F0035F7FC /* BabylonManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598FBD525145C4F0035F7FC /* BabylonManager.cpp */; };
+		0598FBD725145C4F0035F7FC /* BabylonManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0598FBD525145C4F0035F7FC /* BabylonManager.cpp */; };
 		05DDD86F252FF13400213A15 /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD86E252FF13400213A15 /* OpenGLRenderer.m */; };
 		05DDD870252FF13400213A15 /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD86E252FF13400213A15 /* OpenGLRenderer.m */; };
 		3A206C43208EE6A70092C542 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A206C41208EE6A70092C542 /* Main.storyboard */; };
@@ -1426,11 +1426,11 @@
 		056CA3E22512B0A10078139A /* HelloScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloScene.cpp; sourceTree = "<group>"; };
 		056CA3E42512B0A10078139A /* MakeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeScene.h; sourceTree = "<group>"; };
 		056CA3F92512D3830078139A /* gl_rendering_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gl_rendering_context.cpp; sourceTree = "<group>"; };
-		056CA3FA2512D3830078139A /* canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = canvas.cpp; sourceTree = "<group>"; };
-		056CA3FB2512D3830078139A /* canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = canvas.h; sourceTree = "<group>"; };
+		056CA3FA2512D3830078139A /* basic_canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = basic_canvas.cpp; sourceTree = "<group>"; };
+		056CA3FB2512D3830078139A /* basic_canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basic_canvas.h; sourceTree = "<group>"; };
 		056CA3FE2512D3830078139A /* gl_rendering_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl_rendering_context.h; sourceTree = "<group>"; };
-		056CA4322513105E0078139A /* BabylonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonManager.h; sourceTree = "<group>"; };
-		056CA4332513105E0078139A /* BabylonManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BabylonManager.mm; sourceTree = "<group>"; };
+		056CA4322513105E0078139A /* BabylonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonView.h; sourceTree = "<group>"; };
+		056CA4332513105E0078139A /* BabylonView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BabylonView.mm; sourceTree = "<group>"; };
 		05700809252E760F000DE5A8 /* framebuffer_canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framebuffer_canvas.h; sourceTree = "<group>"; };
 		0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framebuffer_canvas.cpp; sourceTree = "<group>"; };
 		0595A532251186DC00D05F0B /* gradient_vertex_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradient_vertex_fx.h; sourceTree = "<group>"; };
@@ -3225,8 +3225,8 @@
 		0597BDC4252BAC420079539C /* perlin_noise_procedural_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = perlin_noise_procedural_texture.cpp; sourceTree = "<group>"; };
 		0597BDEB252BB19F0079539C /* ShaderMaterialDoubleHelixScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderMaterialDoubleHelixScene.cpp; sourceTree = "<group>"; };
 		0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarfieldProceduralTextureScene.cpp; sourceTree = "<group>"; };
-		0598FBD425145C4F0035F7FC /* BabylonLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonLauncher.h; sourceTree = "<group>"; };
-		0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BabylonLauncher.cpp; sourceTree = "<group>"; };
+		0598FBD425145C4F0035F7FC /* BabylonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabylonManager.h; sourceTree = "<group>"; };
+		0598FBD525145C4F0035F7FC /* BabylonManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BabylonManager.cpp; sourceTree = "<group>"; };
 		05DDD86C252FF13400213A15 /* OpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLRenderer.h; sourceTree = "<group>"; };
 		05DDD86D252FF13400213A15 /* GLHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHeaders.h; sourceTree = "<group>"; };
 		05DDD86E252FF13400213A15 /* OpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLRenderer.m; sourceTree = "<group>"; };
@@ -3281,10 +3281,10 @@
 				0597BDEC252BB19F0079539C /* StarfieldProceduralTextureScene.cpp */,
 				056CA3E22512B0A10078139A /* HelloScene.cpp */,
 				056CA3E42512B0A10078139A /* MakeScene.h */,
-				0598FBD525145C4F0035F7FC /* BabylonLauncher.cpp */,
-				0598FBD425145C4F0035F7FC /* BabylonLauncher.h */,
-				056CA3FA2512D3830078139A /* canvas.cpp */,
-				056CA3FB2512D3830078139A /* canvas.h */,
+				0598FBD525145C4F0035F7FC /* BabylonManager.cpp */,
+				0598FBD425145C4F0035F7FC /* BabylonManager.h */,
+				056CA3FA2512D3830078139A /* basic_canvas.cpp */,
+				056CA3FB2512D3830078139A /* basic_canvas.h */,
 				056CA3F92512D3830078139A /* gl_rendering_context.cpp */,
 				056CA3FE2512D3830078139A /* gl_rendering_context.h */,
 			);
@@ -7184,8 +7184,8 @@
 				3AF26D24208FBC2700203EB3 /* AppDelegate.m */,
 				3A9B6E422090239300528FEF /* OpenGLViewController.h */,
 				3A9B6E432090239300528FEF /* OpenGLViewController.m */,
-				056CA4322513105E0078139A /* BabylonManager.h */,
-				056CA4332513105E0078139A /* BabylonManager.mm */,
+				056CA4322513105E0078139A /* BabylonView.h */,
+				056CA4332513105E0078139A /* BabylonView.mm */,
 				3AF26D21208FBC2700203EB3 /* main.m */,
 			);
 			path = Application;
@@ -7461,7 +7461,7 @@
 				0595AFE0251186E600D05F0B /* stereoscopic_free_camera.cpp in Sources */,
 				0595B05A251186E600D05F0B /* disc_builder.cpp in Sources */,
 				0595ACFE251186E500D05F0B /* shadow_only_material_defines.cpp in Sources */,
-				056CA4342513105E0078139A /* BabylonManager.mm in Sources */,
+				056CA4342513105E0078139A /* BabylonView.mm in Sources */,
 				0595ADBA251186E500D05F0B /* dynamic_texture.cpp in Sources */,
 				0595AE8C251186E600D05F0B /* ambient_occlusion_block.cpp in Sources */,
 				0595B224251186E700D05F0B /* animation.cpp in Sources */,
@@ -7568,7 +7568,7 @@
 				0595B198251186E700D05F0B /* physics_raycast_result.cpp in Sources */,
 				0595AE74251186E500D05F0B /* light_information_block.cpp in Sources */,
 				0595B04A251186E600D05F0B /* indexed_vector2.cpp in Sources */,
-				0598FBD625145C4F0035F7FC /* BabylonLauncher.cpp in Sources */,
+				0598FBD625145C4F0035F7FC /* BabylonManager.cpp in Sources */,
 				0595AF42251186E600D05F0B /* pass_cube_post_process.cpp in Sources */,
 				0595B0D2251186E700D05F0B /* texture_selector_extension.cpp in Sources */,
 				0595B192251186E700D05F0B /* bone_look_controller.cpp in Sources */,
@@ -7802,7 +7802,7 @@
 				0595B222251186E700D05F0B /* ianimation_key.cpp in Sources */,
 				0595B206251186E700D05F0B /* back_ease.cpp in Sources */,
 				0595AD86251186E500D05F0B /* depth_reducer.cpp in Sources */,
-				056CA4052512D3830078139A /* canvas.cpp in Sources */,
+				056CA4052512D3830078139A /* basic_canvas.cpp in Sources */,
 				0595B11A251186E700D05F0B /* predicate_condition.cpp in Sources */,
 				0595AEEE251186E600D05F0B /* babylon_file_loader.cpp in Sources */,
 				0595AE1E251186E500D05F0B /* cross_block.cpp in Sources */,
@@ -8012,7 +8012,7 @@
 			files = (
 				0595AF65251186E600D05F0B /* sharpen_post_process.cpp in Sources */,
 				0595ADDD251186E500D05F0B /* iimage_processing_configuration_defines.cpp in Sources */,
-				056CA4062512D3830078139A /* canvas.cpp in Sources */,
+				056CA4062512D3830078139A /* basic_canvas.cpp in Sources */,
 				0595B02D251186E600D05F0B /* instanced_mesh.cpp in Sources */,
 				0595AE1B251186E500D05F0B /* length_block.cpp in Sources */,
 				0595B089251186E600D05F0B /* mesh_lod_level.cpp in Sources */,
@@ -8459,9 +8459,9 @@
 				0595B099251186E600D05F0B /* quadratic_matrix.cpp in Sources */,
 				0595ADF3251186E500D05F0B /* effect_includes_shaders_store.cpp in Sources */,
 				0595B051251186E600D05F0B /* ground_builder.cpp in Sources */,
-				056CA4352513105E0078139A /* BabylonManager.mm in Sources */,
+				056CA4352513105E0078139A /* BabylonView.mm in Sources */,
 				0595AF53251186E600D05F0B /* ssao2_rendering_pipeline.cpp in Sources */,
-				0598FBD725145C4F0035F7FC /* BabylonLauncher.cpp in Sources */,
+				0598FBD725145C4F0035F7FC /* BabylonManager.cpp in Sources */,
 				0595AEA9251186E600D05F0B /* node_material_build_state_shared_data.cpp in Sources */,
 				0595AFC5251186E600D05F0B /* point_particle_emitter.cpp in Sources */,
 				0595AD57251186E500D05F0B /* cmg_bounding_box.cpp in Sources */,
@@ -9035,6 +9035,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"TARGET_IOS=1",
+					"GLES3=1",
 				);
 				INFOPLIST_FILE = Application/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -9063,6 +9064,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"TARGET_IOS=1",
+					"GLES3=1",
 				);
 				INFOPLIST_FILE = Application/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

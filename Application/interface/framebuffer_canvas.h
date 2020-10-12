@@ -5,10 +5,9 @@
 #include <babylon/babylon_api.h>
 #include <babylon/interfaces/icanvas.h>
 
-namespace BABYLON {
-namespace impl {
+namespace Interface {
 
-class FrameBufferCanvas : public ICanvas
+class FrameBufferCanvas : public BABYLON::ICanvas
 {
 public:
   FrameBufferCanvas();
@@ -16,10 +15,10 @@ public:
   void initializeFrameBuffer();
   void resize(int _width, int _height);
 
-  ClientRect& getBoundingClientRect() override;
+  BABYLON::ClientRect& getBoundingClientRect() override;
   bool initializeContext3d() override;
-  ICanvasRenderingContext2D* getContext2d() override;
-  GL::IGLRenderingContext* getContext3d(const EngineOptions& options) override;
+  BABYLON::ICanvasRenderingContext2D* getContext2d() override;
+  BABYLON::GL::IGLRenderingContext* getContext3d(const BABYLON::EngineOptions& options) override;
 
   void bind();
   void unbind();
@@ -34,10 +33,9 @@ public:
 private:
   std::shared_ptr<BABYLON::GL::IGLFramebuffer> mFrameBuffer;
   std::shared_ptr<BABYLON::GL::IGLTexture> mTextureColorBuffer;
-  std::shared_ptr<GL::IGLRenderbuffer> mRenderbuffer;
+  std::shared_ptr<BABYLON::GL::IGLRenderbuffer> mRenderbuffer;
 };
 
-} // end of namespace impl
-} // end of namespace BABYLON
+} // end of namespace Interface
 
 #endif // BABYLON_IMPL_FRAME_BUFFER_CANVAS_H

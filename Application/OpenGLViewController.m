@@ -2,18 +2,14 @@
 #import <Foundation/Foundation.h>
 
 #import "OpenGLViewController.h"
-#import "BabylonManager.h"
+#import "BabylonView.h"
 
 #import <GLKit/GLKTextureLoader.h>
 
 #if TARGET_MACOS
-#import <OpenGL/OpenGL.h>
-#import <OpenGL/gl.h>
 #import <OpenGL/gl3.h>
+#include <OpenGL/gl3ext.h>
 #else // if (TARGET_IOS || TARGET_TVOS)
-#import <OpenGLES/EAGL.h>
-#import <OpenGLES/ES2/gl.h>
-#import <OpenGLES/ES2/glext.h>
 #import <OpenGLES/ES3/gl.h>
 #endif // !(TARGET_IOS || TARGET_TVOS)
 
@@ -32,19 +28,18 @@
 {
   OpenGLView *_view;
   PlatformGLContext *_context;
+  GLuint _defaultFrameBuffer;
+  GLKTextureInfo* _texInfo;
   
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
-  GLuint _defaultFrameBuffer;
   GLuint _colorRenderBuffer;
-  
+  GLuint _depthRenderBuffer;
   CAEAGLLayer* _eaglLayer;
   CADisplayLink* _displayLink;
-  
-  GLKTextureInfo* _texInfo;
 #else
   CVDisplayLinkRef _displayLink;
 #endif
-  BabylonManager *_babylonManager;
+  BabylonView *_babylonView;
 }
 
 - (void)viewDidLoad
@@ -52,13 +47,7 @@
   [super viewDidLoad];
   _view = (OpenGLView *)self.view;
   [self prepareView];
-#if defined(TARGET_IOS) || defined(TARGET_TVOS)
-  
-#else
-  // Default FBO is 0 on macOS since it uses a traditional OpenGL pixel format model
-  _defaultFrameBuffer = 0;
-  _babylonManager = [[BabylonManager alloc] initWithWidth:1280 height:720];
-#endif
+  [self makeCurrentContext];
 }
 
 #if TARGET_MACOS
@@ -91,7 +80,10 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
   CGLLockContext(_context.CGLContextObj);
   [_context makeCurrentContext];
-  [_babylonManager draw];
+  
+  [_babylonView render];
+//  [_babylonView drawQuad:_defaultFrameBuffer texName:_texInfo.name];
+  
   CGLFlushDrawable(_context.CGLContextObj);
   CGLUnlockContext(_context.CGLContextObj);
 }
@@ -120,10 +112,15 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   _view.openGLContext = _context;
   _view.wantsBestResolutionOpenGLSurface = YES;
   
+  // Default FBO is 0 on macOS since it uses a traditional OpenGL pixel format model
+  _defaultFrameBuffer = 0;
   CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
   // Set the renderer output callback function
   CVDisplayLinkSetOutputCallback(_displayLink, &OpenGLDisplayLinkCallback, (__bridge void*)self);
   CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(_displayLink, _context.CGLContextObj, pixelFormat.CGLPixelFormatObj);
+  
+  _texInfo = [self glTextureFromFile];
+  _babylonView = [[BabylonView alloc] initWithWidth:1280 height:720];
 }
 
 - (void)viewDidLayout
@@ -134,7 +131,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   [self makeCurrentContext];
 
   // Update size to Babylon
-  [_babylonManager setSizeWithWidth:viewSizePixels.width height:viewSizePixels.height];
+  [_babylonView setSizeWithWidth:viewSizePixels.width height:viewSizePixels.height];
 
   CGLUnlockContext(_context.CGLContextObj);
   if(!CVDisplayLinkIsRunning(_displayLink))
@@ -161,8 +158,8 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   [EAGLContext setCurrentContext:_context];
   
   glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);
-  [_babylonManager draw];
-  [_babylonManager drawQuad:_defaultFrameBuffer texName:_texInfo.name];
+  [_babylonView render];
+//  [_babylonView drawQuad:_defaultFrameBuffer texName:_texInfo.name];
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   
@@ -193,7 +190,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 
 - (void)setupContext
 {
-  _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+  _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
   NSAssert(_context, @"Could Not Create OpenGL ES Context");
   BOOL isSetCurrent = [EAGLContext setCurrentContext:_context];
   NSAssert(isSetCurrent, @"Could not make OpenGL ES context current");
@@ -201,16 +198,22 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 
 - (void)setupRenderBuffer
 {
-//  _defaultFrameBuffer = (GLuint)[_babylonManager frameBufferId];
-//  _colorRenderBuffer = (GLuint)[_babylonManager renderBufferId];
+//  _defaultFrameBuffer = (GLuint)[_babylonView frameBufferId];
+//  _colorRenderBuffer = (GLuint)[_babylonView renderBufferId];
+  
+  glGenRenderbuffers(1, &_depthRenderBuffer);
+  glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _view.frame.size.width * 2, _view.frame.size.height * 2);
+  
+  glGenRenderbuffers(1, &_colorRenderBuffer);
+  glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   
   // On iOS & tvOS you must create an FBO and attach a CoreAnimation allocated drawable texture to use as the "defaultFBO" for a view
   glGenFramebuffers(1, &_defaultFrameBuffer);
   glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);
-  glGenRenderbuffers(1, &_colorRenderBuffer);
-  glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   
   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorRenderBuffer);
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
 }
 
 - (void)prepareView
@@ -220,7 +223,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   self.view.contentScaleFactor = [UIScreen mainScreen].nativeScale;
   _texInfo = [self glTextureFromFile];
   
-  _babylonManager = [[BabylonManager alloc] initWithWidth:_view.frame.size.width height:_view.frame.size.height];
+  _babylonView = [[BabylonView alloc] initWithWidth:_view.frame.size.width height:_view.frame.size.height];
   [self setupRenderBuffer];
   [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
   [self setupDisplayLink];
@@ -248,10 +251,10 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   
   // Update size to Babylon
-  [_babylonManager setSizeWithWidth:drawSize.width height:drawSize.height];
+  [_babylonView setSizeWithWidth:drawSize.width height:drawSize.height];
   
 //  CGSize resolution = _view.frame.size;
-//  [_babylonManager setSizeWithWidth:resolution.width height:resolution.height];
+//  [_babylonView setSizeWithWidth:resolution.width height:resolution.height];
   
   [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
 }
@@ -266,6 +269,8 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   [self resizeDrawable];
 }
 
+#endif
+
 - (GLKTextureInfo*)glTextureFromFile
 {
   NSError *error;
@@ -275,8 +280,5 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   NSAssert(texInfo, @"Failed to load texture at %@: %@", baseTextureURL.absoluteString, error);
   return texInfo;
 }
-
-#endif
-
 
 @end
