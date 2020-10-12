@@ -15,10 +15,6 @@ public:
   bool initializeContext3d() override;
   BABYLON::ICanvasRenderingContext2D* getContext2d() override;
   BABYLON::GL::IGLRenderingContext* getContext3d(const BABYLON::EngineOptions& options) override;
-  
-//  unsigned int frameBufferId();
-//  unsigned int textureBufferId();
-//  unsigned int renderBufferId();
 };
 
 } // end of namespace Interface

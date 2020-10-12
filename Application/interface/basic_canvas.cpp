@@ -42,19 +42,4 @@ GL::IGLRenderingContext* BasicCanvas::getContext3d(const EngineOptions& /*option
   return _renderingContext.get();
 }
 
-//unsigned int BasicCanvas::frameBufferId()
-//{
-//  return 0;
-//}
-//
-//unsigned int BasicCanvas::textureBufferId()
-//{
-//  return 0;
-//}
-//
-//unsigned int BasicCanvas::renderBufferId()
-//{
-//  return 0;
-//}
-
 } // end of namespace Interface

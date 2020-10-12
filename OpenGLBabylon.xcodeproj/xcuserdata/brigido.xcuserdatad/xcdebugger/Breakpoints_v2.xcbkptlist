@@ -30,8 +30,8 @@
             filePath = "Application/OpenGLViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-prepareView"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,25 +46,9 @@
             filePath = "Application/OpenGLViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-prepareView"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E39104CA-9AF9-4AF6-ACDF-4626D7B1CB2A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Application/OpenGLViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "-glTextureFromFile"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

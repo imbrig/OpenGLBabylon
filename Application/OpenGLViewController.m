@@ -4,8 +4,6 @@
 #import "OpenGLViewController.h"
 #import "BabylonView.h"
 
-#import <GLKit/GLKTextureLoader.h>
-
 #if TARGET_MACOS
 #import <OpenGL/gl3.h>
 #include <OpenGL/gl3ext.h>
@@ -29,7 +27,6 @@
   OpenGLView *_view;
   PlatformGLContext *_context;
   GLuint _defaultFrameBuffer;
-  GLKTextureInfo* _texInfo;
   
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
   GLuint _colorRenderBuffer;
@@ -82,7 +79,6 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   [_context makeCurrentContext];
   
   [_babylonView render];
-//  [_babylonView drawQuad:_defaultFrameBuffer texName:_texInfo.name];
   
   CGLFlushDrawable(_context.CGLContextObj);
   CGLUnlockContext(_context.CGLContextObj);
@@ -119,7 +115,6 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   CVDisplayLinkSetOutputCallback(_displayLink, &OpenGLDisplayLinkCallback, (__bridge void*)self);
   CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(_displayLink, _context.CGLContextObj, pixelFormat.CGLPixelFormatObj);
   
-  _texInfo = [self glTextureFromFile];
   _babylonView = [[BabylonView alloc] initWithWidth:1280 height:720];
 }
 
@@ -159,7 +154,7 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   
   glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);
   [_babylonView render];
-//  [_babylonView drawQuad:_defaultFrameBuffer texName:_texInfo.name];
+  
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   
@@ -198,9 +193,6 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 
 - (void)setupRenderBuffer
 {
-//  _defaultFrameBuffer = (GLuint)[_babylonView frameBufferId];
-//  _colorRenderBuffer = (GLuint)[_babylonView renderBufferId];
-  
   glGenRenderbuffers(1, &_depthRenderBuffer);
   glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
   glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _view.frame.size.width * 2, _view.frame.size.height * 2);
@@ -221,7 +213,6 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   [self setupLayer];
   [self setupContext];
   self.view.contentScaleFactor = [UIScreen mainScreen].nativeScale;
-  _texInfo = [self glTextureFromFile];
   
   _babylonView = [[BabylonView alloc] initWithWidth:_view.frame.size.width height:_view.frame.size.height];
   [self setupRenderBuffer];
@@ -253,9 +244,6 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   // Update size to Babylon
   [_babylonView setSizeWithWidth:drawSize.width height:drawSize.height];
   
-//  CGSize resolution = _view.frame.size;
-//  [_babylonView setSizeWithWidth:resolution.width height:resolution.height];
-  
   [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
 }
 
@@ -270,15 +258,5 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 }
 
 #endif
-
-- (GLKTextureInfo*)glTextureFromFile
-{
-  NSError *error;
-  NSURL *baseTextureURL = [[NSBundle mainBundle] URLForResource:@"Assets/Colors" withExtension:@"png"];
-  NSDictionary *option = nil;// @{ GLKTextureLoaderOriginBottomLeft : @YES};
-  GLKTextureInfo* texInfo = [GLKTextureLoader textureWithContentsOfURL:baseTextureURL options:option error:&error];
-  NSAssert(texInfo, @"Failed to load texture at %@: %@", baseTextureURL.absoluteString, error);
-  return texInfo;
-}
 
 @end
