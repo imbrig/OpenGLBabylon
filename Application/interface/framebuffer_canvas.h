@@ -32,8 +32,9 @@ public:
 
 private:
   std::shared_ptr<BABYLON::GL::IGLFramebuffer> mFrameBuffer;
-  std::shared_ptr<BABYLON::GL::IGLTexture> mTextureColorBuffer;
+//  std::shared_ptr<BABYLON::GL::IGLRenderbuffer> mDepthBuffer;
   std::shared_ptr<BABYLON::GL::IGLRenderbuffer> mRenderbuffer;
+  std::shared_ptr<BABYLON::GL::IGLTexture> mTextureColorBuffer;
 };
 
 } // end of namespace Interface

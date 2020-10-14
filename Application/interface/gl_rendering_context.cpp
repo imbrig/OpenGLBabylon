@@ -600,6 +600,7 @@ void GLRenderingContext::framebufferRenderbuffer(GLenum target, GLenum attachmen
 void GLRenderingContext::framebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget,
                                               IGLTexture* texture, GLint level)
 {
+  //glFramebufferTexture (GLenum target, GLenum attachment, GLuint texture, GLint level)
   glFramebufferTexture2D(target, attachment, textarget, texture->value, level);
 }
 

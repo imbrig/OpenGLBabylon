@@ -31,10 +31,10 @@
   _launcher->render();
 }
 
-//- (void)drawQuad:(GLuint)defaultFrameBuffer texName:(GLuint)texName
-//{
-//  _launcher->drawQuad(defaultFrameBuffer, texName);
-//}
+- (void)drawQuad:(GLuint)defaultFrameBuffer texName:(GLuint)texName
+{
+  _launcher->drawQuad(defaultFrameBuffer, texName);
+}
 
 - (void)update
 {
