@@ -191,11 +191,11 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
   NSAssert(isSetCurrent, @"Could not make OpenGL ES context current");
 }
 
-- (void)setupRenderBuffer
+- (void)setupRenderBuffer:(CGSize)viewSize
 {
   glGenRenderbuffers(1, &_depthRenderBuffer);
   glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _view.frame.size.width * 2, _view.frame.size.height * 2);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, viewSize.width, viewSize.height);
   
   glGenRenderbuffers(1, &_colorRenderBuffer);
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
@@ -212,38 +212,34 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
   [self setupLayer];
   [self setupContext];
-  self.view.contentScaleFactor = [UIScreen mainScreen].nativeScale;
-  
-  _babylonView = [[BabylonView alloc] initWithWidth:_view.frame.size.width height:_view.frame.size.height];
-  [self setupRenderBuffer];
+  CGSize viewSize = [self drawableSize];
+  _babylonView = [[BabylonView alloc] initWithWidth:viewSize.width height:viewSize.height];
+  [self setupRenderBuffer:viewSize];
   [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
   [self setupDisplayLink];
 }
 
 - (CGSize)drawableSize
 {
-  GLint backingWidth = 0, backingHeight = 0;
-  glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
-  glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
-  glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight);
-  CGSize drawableSize = {backingWidth, backingHeight};
-  return drawableSize;
+//  GLint backingWidth = 0, backingHeight = 0;
+//  glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
+//  glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
+//  glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight);
+//  CGSize drawableSize = {backingWidth, backingHeight};
+  return [UIScreen mainScreen].bounds.size;
 }
 
 - (void)resizeDrawable
 {
   [self makeCurrentContext];
-
   CGSize drawSize = [self drawableSize];
-  glViewport(0, 0, drawSize.width, drawSize.height);
-  
-  // Ensure we've actually got a render buffer first;
-  assert(_colorRenderBuffer != 0);
-  glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   
   // Update size to Babylon
   [_babylonView setSizeWithWidth:drawSize.width height:drawSize.height];
   
+  // Ensure we've actually got a render buffer first;
+  assert(_colorRenderBuffer != 0);
+  glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
 }
 
