@@ -41,7 +41,7 @@ public:
     auto light = HemisphericLight::New("light1", Vector3(0.f, 1.f, 0.f), scene);
     light->intensity = 0.7f;
 
-//    auto knot = Mesh::CreateTorusKnot("knot", 1, 0.4f, 128, 64, 2, 3, scene);
+    auto knot = Mesh::CreateTorusKnot("knot", 1, 0.4f, 128, 64, 2, 3, scene);
 
     // Mirror
 //    auto mirror = Mesh::CreateBox("Mirror", 1.0, scene);

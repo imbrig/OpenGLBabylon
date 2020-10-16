@@ -45,7 +45,7 @@ void FrameBufferCanvas::initializeFrameBuffer()
   // Create a color attachment texture
   mTextureColorBuffer = _renderingContext->createTexture();
   _renderingContext->bindTexture(GL_TEXTURE_2D, mTextureColorBuffer.get());
-  _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+  _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGBA, clientWidth, clientHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
   _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
   _renderingContext->bindTexture(GL_TEXTURE_2D, nullptr);
@@ -58,10 +58,13 @@ void FrameBufferCanvas::initializeFrameBuffer()
   _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, mRenderbuffer.get());
   _renderingContext->renderbufferStorage(GL_RENDERBUFFER, GL::DEPTH24_STENCIL8, clientWidth, clientHeight);
   _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL::DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mRenderbuffer.get());
-
-  // Set the list of draw buffers.
-  std::vector<GLenum> drawBuffers{GL_COLOR_ATTACHMENT0};
-  _renderingContext->drawBuffers(drawBuffers); // "1" is the size of DrawBuffers
+  _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, nullptr);
+  
+  _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mRenderbuffer.get());
+  
+//  // Set the list of draw buffers.
+//  std::vector<GLenum> drawBuffers{GL_COLOR_ATTACHMENT0};
+//  _renderingContext->drawBuffers(drawBuffers); // "1" is the size of DrawBuffers
 
   if(_renderingContext->checkFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
   {

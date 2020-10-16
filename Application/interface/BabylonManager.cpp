@@ -22,7 +22,6 @@ BabylonManager::BabylonManager(int width, int height):
 //  _renderCanvas = std::make_unique<BasicCanvas>();
   _renderCanvas->clientWidth = _width;
   _renderCanvas->clientHeight = _height;
-  
   _renderCanvas->setFrameSize(_width, _height);
   _renderCanvas->initializeFrameBuffer();
   
@@ -42,8 +41,8 @@ BabylonManager::BabylonManager(int width, int height):
       _renderableScene = Samples::MakeHelloScene(_renderCanvas.get());
       break;
   }
-  
   _renderableScene->initialize(_renderCanvas.get());
+  
   _intialized = true;
 }
 
@@ -55,14 +54,16 @@ BabylonManager::~BabylonManager()
 void BabylonManager::render()
 {
   // Render Scene
-//  _renderCanvas->bind();
+  _renderCanvas->bind();
 //  glClearColor(0.5, 0, 0, 1);
 //  glClear(GL_COLOR_BUFFER_BIT);
 //  glEnable(GL_DEPTH_TEST);
-//  _renderableScene->render();
-//  _renderCanvas->unbind();
+  _renderableScene->render();
+  _renderCanvas->unbind();
   
-//  _renderCanvas->renderBufferBind();
+  GetCppGLError(__FILE__, __LINE__);
+  
+//  drawQuad(0, 0);
 }
 
 void BabylonManager::setSize(int width, int height)
@@ -95,30 +96,16 @@ unsigned int BabylonManager::textureBufferId()
 
 void BabylonManager::drawQuad(GLuint defaultFrameBuffer, GLuint texName)
 {
-  _renderCanvas->bind();
-//  glClearColor(0.5, 0, 0, 1);
-//  glClear(GL_COLOR_BUFFER_BIT);
-  _renderableScene->render();
-//  glEnable(GL_DEPTH_TEST);
-  glUseProgram(_programName);
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, texName);
-  glBindVertexArray(_vaoName);
-  glDrawArrays(GL_TRIANGLES, 0, 6);
-//  glDisable(GL_DEPTH_TEST);
-  _renderCanvas->unbind();
-  
-  ///////////////////////////////////////////////////
-  
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  glDisable(GL_DEPTH_TEST);
   GLuint renderTexture = _renderCanvas->textureBufferId();
 
   glClearColor(0, 0, 0.5, 1);
   glClear(GL_COLOR_BUFFER_BIT);
   glUseProgram(_programName);
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, renderTexture);
   glBindVertexArray(_vaoName);
+//  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, renderTexture);
   glDrawArrays(GL_TRIANGLES, 0, 6);
 //  glDisable(GL_DEPTH_TEST);
   GetCppGLError(__FILE__, __LINE__);
@@ -192,9 +179,9 @@ GLuint BabylonManager::buildQuadProgramShaders()
   const GLchar* vertexString[] =
   {
 #if TARGET_IOS
-    "#version 300 es\n"
+    "#version 300 es\n",
 #else
-    "#version 330 core\n"
+    "#version 330 core\n",
 #endif
     "#ifdef GL_ES\n",
     "precision highp float;\n",
@@ -218,9 +205,9 @@ GLuint BabylonManager::buildQuadProgramShaders()
   const GLchar* fragmentString[] =
   {
 #if TARGET_IOS
-    "#version 300 es\n"
+    "#version 300 es\n",
 #else
-    "#version 330 core\n"
+    "#version 330\n",
 #endif
     "#ifdef GL_ES\n",
     "precision highp float;\n",
