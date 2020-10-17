@@ -1,8 +1,8 @@
 #ifndef BabylonManager_H
 #define BabylonManager_H
 
-//#include "framebuffer_canvas.h"
-#include "basic_canvas.h"
+#include "framebuffer_canvas.h"
+//#include "basic_canvas.h"
 #include <memory>
 
 #if TARGET_MACOS
@@ -21,9 +21,9 @@ namespace Interface {
 
 class BabylonManager {
 public:
-  int _width                = 0;
-  int _height               = 0;
-  bool _intialized          = false;
+  int _width = 0;
+  int _height = 0;
+  bool _intialized = false;
   
   BabylonManager(int width, int height);
   ~BabylonManager();
@@ -31,10 +31,14 @@ public:
   void render();
   void setSize(int width, int height);
   
+  unsigned int frameBufferId();
+  unsigned int renderBufferId();
+  unsigned int textureBufferId();
+  
 private:
   // Babylon scene related variables
-  std::unique_ptr<BasicCanvas> _renderCanvas;
-//  std::unique_ptr<FrameBufferCanvas> _renderCanvas;
+//  std::unique_ptr<BasicCanvas> _renderCanvas;
+  std::unique_ptr<FrameBufferCanvas> _renderCanvas;
   std::shared_ptr<BABYLON::IRenderableScene> _renderableScene;
 }; // end of class SimpleLauncher
 

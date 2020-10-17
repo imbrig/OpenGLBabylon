@@ -48,16 +48,20 @@ void FrameBufferCanvas::initializeFrameBuffer()
   _renderingContext->texImage2D(GL_TEXTURE_2D, 0, GL_RGB, clientWidth, clientHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
   _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   _renderingContext->texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
+  _renderingContext->bindTexture(GL_TEXTURE_2D, nullptr);
+  
+  // Set "renderedTexture" as our colour attachement #0
+  _renderingContext->framebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mTextureColorBuffer.get(), 0);
+  
   // Create a renderbuffer object for depth and stencil attachment
   mRenderbuffer = _renderingContext->createRenderbuffer();
   _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, mRenderbuffer.get());
   _renderingContext->renderbufferStorage(GL_RENDERBUFFER, GL::DEPTH24_STENCIL8, clientWidth, clientHeight);
   _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL::DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mRenderbuffer.get());
-
-  // Set "renderedTexture" as our colour attachement #0
-  _renderingContext->framebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mTextureColorBuffer.get(), 0);
-
+  _renderingContext->bindRenderbuffer(GL_RENDERBUFFER, nullptr);
+  
+  _renderingContext->framebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mRenderbuffer.get());
+  
   // Set the list of draw buffers.
   std::vector<GLenum> drawBuffers{GL_COLOR_ATTACHMENT0};
   _renderingContext->drawBuffers(drawBuffers); // "1" is the size of DrawBuffers

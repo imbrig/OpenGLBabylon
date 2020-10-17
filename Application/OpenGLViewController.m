@@ -2,7 +2,10 @@
 #import <Foundation/Foundation.h>
 
 #import "OpenGLViewController.h"
+#import "OpenGL/OpenGLRenderer.h"
 #import "BabylonView.h"
+
+#import <GLKit/GLKTextureLoader.h>
 
 #if TARGET_MACOS
 #import <OpenGL/gl3.h>
@@ -28,6 +31,8 @@
   PlatformGLContext *_context;
   GLuint _defaultFrameBuffer;
   
+  GLKTextureInfo* _texInfo;
+  OpenGLRenderer *_openGLRenderer;
 #if defined(TARGET_IOS) || defined(TARGET_TVOS)
   GLuint _colorRenderBuffer;
   GLuint _depthRenderBuffer;
@@ -152,9 +157,12 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
   [EAGLContext setCurrentContext:_context];
   
-  glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);
   [_babylonView render];
+  GLuint renderTexture = [_babylonView textureBufferId];
+//  GLuint renderTexture = _texInfo.name;
   
+  glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);
+  [_openGLRenderer draw:renderTexture];
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
   
@@ -212,7 +220,14 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
   [self setupLayer];
   [self setupContext];
+  
+  _texInfo = [self glTextureFromFile];
+  
   CGSize viewSize = [self drawableSize];
+  
+  _openGLRenderer = [[OpenGLRenderer alloc] init];
+  [_openGLRenderer resize:viewSize];
+  
   _babylonView = [[BabylonView alloc] initWithWidth:viewSize.width height:viewSize.height];
   [self setupRenderBuffer:viewSize];
   [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)_view.layer];
@@ -254,5 +269,15 @@ static CVReturn OpenGLDisplayLinkCallback(CVDisplayLinkRef displayLink,
 }
 
 #endif
+
+- (GLKTextureInfo*)glTextureFromFile
+{
+  NSError *error;
+  NSURL *baseTextureURL = [[NSBundle mainBundle] URLForResource:@"Assets/Colors" withExtension:@"png"];
+  NSDictionary *option = nil;// @{ GLKTextureLoaderOriginBottomLeft : @YES};
+  GLKTextureInfo* texInfo = [GLKTextureLoader textureWithContentsOfURL:baseTextureURL options:option error:&error];
+  NSAssert(texInfo, @"Failed to load texture at %@: %@", baseTextureURL.absoluteString, error);
+  return texInfo;
+}
 
 @end

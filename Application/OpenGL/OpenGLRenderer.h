@@ -5,7 +5,7 @@
 @interface OpenGLRenderer : NSObject
 
 - (instancetype)init;
-- (void)draw:(GLuint)defaultFrameBuffer texTarget:(GLenum)texTarget texName:(GLuint)texName;
+- (void)draw:(GLuint)texName;
 - (void)resize:(CGSize)size;
 
 @end

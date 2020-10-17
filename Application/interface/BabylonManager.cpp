@@ -15,12 +15,12 @@ BabylonManager::BabylonManager(int width, int height):
   _height(height),
   _renderableScene(nullptr)
 {
-//  _renderCanvas = std::make_unique<BABYLON::impl::FrameBufferCanvas>();
-  _renderCanvas = std::make_unique<BasicCanvas>();
+  _renderCanvas = std::make_unique<FrameBufferCanvas>();
+//  _renderCanvas = std::make_unique<BasicCanvas>();
   _renderCanvas->clientWidth = _width;
   _renderCanvas->clientHeight = _height;
-  
   _renderCanvas->setFrameSize(_width, _height);
+  _renderCanvas->initializeFrameBuffer();
   
   int pickScene = 1;
   switch(pickScene)
@@ -50,9 +50,10 @@ BabylonManager::~BabylonManager()
 void BabylonManager::render()
 {
   // Render Scene
-//  _renderCanvas->bind();
+  _renderCanvas->bind();
+//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
   _renderableScene->render();
-//  _renderCanvas->unbind();
+  _renderCanvas->unbind();
 }
 
 void BabylonManager::setSize(int width, int height)
@@ -65,6 +66,21 @@ void BabylonManager::setSize(int width, int height)
     _renderCanvas->setFrameSize(_width, _height);
     _renderableScene->getEngine()->resize();
   }
+}
+
+unsigned int BabylonManager::frameBufferId()
+{
+  return _renderCanvas->frameBufferId();
+}
+
+unsigned int BabylonManager::renderBufferId()
+{
+  return _renderCanvas->renderBufferId();
+}
+
+unsigned int BabylonManager::textureBufferId()
+{
+  return _renderCanvas->textureBufferId();
 }
 
 } // end of namespace Launcher

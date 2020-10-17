@@ -16,4 +16,8 @@
 - (void)render;
 - (void)update;
 
+- (unsigned int)frameBufferId;
+- (unsigned int)renderBufferId;
+- (unsigned int)textureBufferId;
+
 @end

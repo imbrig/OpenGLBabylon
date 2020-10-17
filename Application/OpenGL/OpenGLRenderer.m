@@ -39,12 +39,12 @@ enum {
 
   static const Vertex QuadVertices[] = {
     //  Positions                    TexCoords
-    { { -0.9,  -0.9,  0.0,  1.0 }, { 0.0, 1.0 } },
-    { { -0.9,   0.9,  0.0,  1.0 }, { 0.0, 0.0 } },
-    { {  0.9,  -0.9,  0.0,  1.0 }, { 1.0, 1.0 } },
-    { {  0.9,  -0.9,  0.0,  1.0 }, { 1.0, 1.0 } },
-    { { -0.9,   0.9,  0.0,  1.0 }, { 0.0, 0.0 } },
-    { {  0.9,   0.9,  0.0,  1.0 }, { 1.0, 0.0 } },
+    { { -1.0,  -1.0,  0.0,  1.0 }, { 0.0, 1.0 } },
+    { { -1.0,   1.0,  0.0,  1.0 }, { 0.0, 0.0 } },
+    { {  1.0,  -1.0,  0.0,  1.0 }, { 1.0, 1.0 } },
+    { {  1.0,  -1.0,  0.0,  1.0 }, { 1.0, 1.0 } },
+    { { -1.0,   1.0,  0.0,  1.0 }, { 0.0, 0.0 } },
+    { {  1.0,   1.0,  0.0,  1.0 }, { 1.0, 0.0 } },
   };
 
   GLuint vaoName;
@@ -105,7 +105,7 @@ enum {
                             "    gl_Position = inPosition;\n"
                             "    varTexcoord = inTexcoord;\n"
                             "}";
-  
+
   NSString *fragmentString = @"#ifdef GL_ES\n"
                               "precision highp float;\n"
                               "#endif\n"
@@ -166,8 +166,12 @@ enum {
 
   // Prepend our vertex shader source string with the supported GLSL version so
   //  the shader will work on ES, Legacy, and OpenGL 3.2 Core Profile contexts
-  sprintf(sourceString, "#version %d\n%s", version, vertexString.UTF8String);
-
+#if TARGET_IOS
+  sprintf(sourceString, "#version %d es\n%s", version, vertexString.UTF8String);
+#else
+  sprintf(sourceString, "#version %d core\n%s", version, vertexString.UTF8String);
+#endif
+  
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(vertexShader, 1, (const GLchar **)&(sourceString), NULL);
   glCompileShader(vertexShader);
@@ -206,8 +210,12 @@ enum {
 
   // Prepend our fragment shader source string with the supported GLSL version so
   //  the shader will work on ES, Legacy, and OpenGL 3.2 Core Profile contexts
-  sprintf(sourceString, "#version %d\n%s", version, fragmentString.UTF8String);
-
+#if TARGET_IOS
+  sprintf(sourceString, "#version %d es\n%s", version, fragmentString.UTF8String);
+#else
+  sprintf(sourceString, "#version %d core\n%s", version, fragmentString.UTF8String);
+#endif
+  
   GLuint fragShader = glCreateShader(GL_FRAGMENT_SHADER);
   glShaderSource(fragShader, 1, (const GLchar **)&(sourceString), NULL);
   glCompileShader(fragShader);
@@ -279,12 +287,10 @@ enum {
   return prgName;
 }
 
-- (void)draw:(GLuint)defaultFrameBuffer texTarget:(GLenum)texTarget texName:(GLuint)texName;
+- (void)draw:(GLuint)texName;
 {
-  glBindFramebuffer(GL_FRAMEBUFFER, defaultFrameBuffer);
-  glClearColor(0.25, 0, 0.5, 1);
-
-  glClear(GL_COLOR_BUFFER_BIT);
+  glClearColor(0, 0, 0.5, 1);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
   glUseProgram(_programName);
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, texName);

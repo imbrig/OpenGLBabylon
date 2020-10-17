@@ -35,4 +35,19 @@
 {
 }
 
+- (unsigned int)frameBufferId
+{
+  return _launcher->frameBufferId();
+}
+
+- (unsigned int)renderBufferId
+{
+  return _launcher->renderBufferId();
+}
+
+- (unsigned int)textureBufferId
+{
+  return _launcher->textureBufferId();
+}
+
 @end
