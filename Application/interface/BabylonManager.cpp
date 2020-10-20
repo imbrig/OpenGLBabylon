@@ -53,7 +53,30 @@ void BabylonManager::render()
   _renderCanvas->bind();
 //  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
   _renderableScene->render();
+  
   _renderCanvas->unbind();
+}
+
+GLubyte* BabylonManager::getPixelDataFromFrameBuffer()
+{
+  _renderCanvas->bind();
+  const int width = _renderCanvas->clientWidth;
+  const int height = _renderCanvas->clientHeight;
+    
+  // Grabbing image from FBO
+  //glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
+    
+  // Call draw function so that LiveDriverSDK output and ARKit rendering both presented
+  //glViewport(0, 0, width, height);
+    
+  glFinish();
+    
+  int dataLength = width * height * 4;
+  GLubyte *data = (GLubyte*)malloc(dataLength * sizeof(GLubyte));
+  glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+  _renderCanvas->unbind();
+  
+  return data;
 }
 
 void BabylonManager::setSize(int width, int height)

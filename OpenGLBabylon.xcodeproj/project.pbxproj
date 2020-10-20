@@ -17,6 +17,8 @@
 		056CA4352513105E0078139A /* BabylonView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 056CA4332513105E0078139A /* BabylonView.mm */; };
 		0570080B252E760F000DE5A8 /* framebuffer_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */; };
 		0570080C252E760F000DE5A8 /* framebuffer_canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */; };
+		058B4B2D253F8AB800CD5D6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058B4B2C253F8AB700CD5D6D /* UIKit.framework */; };
+		058B4B2F253F8AC000CD5D6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058B4B2E253F8AC000CD5D6D /* CoreGraphics.framework */; };
 		0595ACF2251186E500D05F0B /* gradient_material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595A57E251186DD00D05F0B /* gradient_material.cpp */; };
 		0595ACF3251186E500D05F0B /* gradient_material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595A57E251186DD00D05F0B /* gradient_material.cpp */; };
 		0595ACF4251186E500D05F0B /* gradient_material_defines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0595A57F251186DD00D05F0B /* gradient_material_defines.cpp */; };
@@ -1433,6 +1435,8 @@
 		056CA4332513105E0078139A /* BabylonView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BabylonView.mm; sourceTree = "<group>"; };
 		05700809252E760F000DE5A8 /* framebuffer_canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framebuffer_canvas.h; sourceTree = "<group>"; };
 		0570080A252E760F000DE5A8 /* framebuffer_canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framebuffer_canvas.cpp; sourceTree = "<group>"; };
+		058B4B2C253F8AB700CD5D6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		058B4B2E253F8AC000CD5D6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		0595A532251186DC00D05F0B /* gradient_vertex_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradient_vertex_fx.h; sourceTree = "<group>"; };
 		0595A533251186DC00D05F0B /* gradient_material_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradient_material_defines.h; sourceTree = "<group>"; };
 		0595A534251186DC00D05F0B /* gradient_fragment_fx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradient_fragment_fx.h; sourceTree = "<group>"; };
@@ -3258,6 +3262,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				058B4B2F253F8AC000CD5D6D /* CoreGraphics.framework in Frameworks */,
+				058B4B2D253F8AB800CD5D6D /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3267,6 +3273,8 @@
 		05363A6D2527EB2900C4EBCA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				058B4B2E253F8AC000CD5D6D /* CoreGraphics.framework */,
+				058B4B2C253F8AB700CD5D6D /* UIKit.framework */,
 				05363A6E2527EB2900C4EBCA /* OpenGLES.framework */,
 			);
 			name = Frameworks;
@@ -9031,7 +9039,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 578JBQTN45;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"TARGET_IOS=1",
@@ -9060,7 +9068,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 578JBQTN45;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"TARGET_IOS=1",

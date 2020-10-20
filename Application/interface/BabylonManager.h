@@ -35,6 +35,8 @@ public:
   unsigned int renderBufferId();
   unsigned int textureBufferId();
   
+  GLubyte* getPixelDataFromFrameBuffer();
+  
 private:
   // Babylon scene related variables
 //  std::unique_ptr<BasicCanvas> _renderCanvas;

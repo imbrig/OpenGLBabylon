@@ -162,12 +162,13 @@ enum {
   //////////////////////////////////////
 
   // Allocate memory for the source string including the version preprocessor information
-  sourceString = malloc(vertexString.length + versionStringSize);
+  //sourceString = malloc(vertexString.length + versionStringSize);
+  sourceString = vertexString.UTF8String;
 
   // Prepend our vertex shader source string with the supported GLSL version so
   //  the shader will work on ES, Legacy, and OpenGL 3.2 Core Profile contexts
 #if TARGET_IOS
-  sprintf(sourceString, "#version %d es\n%s", version, vertexString.UTF8String);
+  //sprintf(sourceString, "#version %d es\n%s", version, vertexString.UTF8String);
 #else
   sprintf(sourceString, "#version %d core\n%s", version, vertexString.UTF8String);
 #endif
@@ -192,7 +193,7 @@ enum {
     return 0;
   }
 
-  free(sourceString);
+  //free(sourceString);
   sourceString = NULL;
 
   // Attach the vertex shader to our program
@@ -206,12 +207,13 @@ enum {
   /////////////////////////////////////////
 
   // Allocate memory for the source string including the version preprocessor information
-  sourceString = malloc(fragmentString.length + versionStringSize);
-
+  //sourceString = malloc(fragmentString.length + versionStringSize);
+  sourceString = fragmentString.UTF8String;
+  
   // Prepend our fragment shader source string with the supported GLSL version so
   //  the shader will work on ES, Legacy, and OpenGL 3.2 Core Profile contexts
 #if TARGET_IOS
-  sprintf(sourceString, "#version %d es\n%s", version, fragmentString.UTF8String);
+  //sprintf(sourceString, "#version %d es\n%s", version, fragmentString.UTF8String);
 #else
   sprintf(sourceString, "#version %d core\n%s", version, fragmentString.UTF8String);
 #endif
@@ -235,7 +237,7 @@ enum {
     return 0;
   }
 
-  free(sourceString);
+  //free(sourceString);
   sourceString = NULL;
 
   // Attach the fragment shader to our program
@@ -289,13 +291,22 @@ enum {
 
 - (void)draw:(GLuint)texName;
 {
-  glClearColor(0, 0, 0.5, 1);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-  glUseProgram(_programName);
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, texName);
-  glBindVertexArray(_vaoName);
-  glDrawArrays(GL_TRIANGLES, 0, 6);
+//  glClearColor(0, 0, 0.5, 1);
+//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+//  glUseProgram(_programName);
+//  glActiveTexture(GL_TEXTURE0);
+//  glBindTexture(GL_TEXTURE_2D, texName);
+//  glBindVertexArray(_vaoName);
+//  glDrawArrays(GL_TRIANGLES, 0, 6);
+  
+  GLuint readFboId = 0;
+  glGenFramebuffers(1, &readFboId);
+  glBindFramebuffer(GL_READ_FRAMEBUFFER, readFboId);
+  glFramebufferTexture2D(GL_READ_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texName, 0);
+  glBlitFramebuffer(0, 0, _viewSize.width, _viewSize.height, 0, 0, _viewSize.width, _viewSize.height, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+  glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
+  glDeleteFramebuffers(1, &readFboId);
+  
   GetGLError();
 }
 
