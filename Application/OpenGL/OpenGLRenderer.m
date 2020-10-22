@@ -314,7 +314,6 @@ enum {
 {
   _viewSize = size;
   glViewport(0, 0, size.width, size.height);
-  float aspect = (float)size.width / size.height;
 }
 
 @end

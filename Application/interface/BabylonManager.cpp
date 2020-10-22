@@ -66,7 +66,7 @@ GLubyte* BabylonManager::getPixelDataFromFrameBuffer()
   // Grabbing image from FBO
   //glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
     
-  // Call draw function so that LiveDriverSDK output and ARKit rendering both presented
+  // Call draw function so that rendering both presented
   //glViewport(0, 0, width, height);
     
   glFinish();
